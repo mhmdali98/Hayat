@@ -127,17 +127,19 @@
   /* ─────────── NAVBAR ─────────── */
   const nav = $("#navbar");
   const toTop = $("#toTop");
-  const heroInner = $(".hero-inner");
+  const heroCopy = $(".hero-copy");
   const onScroll = () => {
     const y = scrollY;
     nav.classList.toggle("scrolled", y > 30);
     toTop.classList.toggle("show", y > innerHeight * 1.2);
     document.body.classList.toggle("flying", y > innerHeight * .45);
-    // hero content drifts away and fades as you scroll past it
-    if (heroInner && !reduceMotion && y < innerHeight * 1.2) {
-      const k = Math.min(1, y / (innerHeight * .75));
-      heroInner.style.opacity = (1 - k * .9).toFixed(3);
-      heroInner.style.translate = `0 ${(k * 44).toFixed(1)}px`;
+    // the hero HEADLINE drifts away and fades as you scroll past it.
+    // Only the copy — never the search card, which must stay usable
+    // while it is still on screen (tall mobile hero).
+    if (heroCopy && !reduceMotion && y < innerHeight * 1.4) {
+      const k = Math.min(1, y / (innerHeight * .8));
+      heroCopy.style.opacity = Math.max(.1, 1 - k).toFixed(3);
+      heroCopy.style.translate = `0 ${(k * 36).toFixed(1)}px`;
     }
     // flight rail progress
     const max = document.documentElement.scrollHeight - innerHeight;
