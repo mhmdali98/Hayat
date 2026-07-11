@@ -89,22 +89,67 @@
 
 <main>
 
-<!-- ══════════ HERO : الفجر ══════════ -->
-<section class="hero" id="hero" data-sky="dawn">
-  <!-- clouds -->
-  <div class="clouds" aria-hidden="true">
-    <svg class="cloud cloud-1" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
-    <svg class="cloud cloud-2" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
-    <svg class="cloud cloud-3" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
-    <svg class="cloud cloud-4" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
+<!-- ══════════ HERO : الستراتوسفير عند الفجر ══════════ -->
+<section class="hero" id="hero" data-sky="dusk">
+  <!-- photographic stratosphere backdrop -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-stars"></div>
+    <img class="drift-cloud dc-a" src="imgs/cloud-a.webp" alt="" loading="eager">
+    <img class="drift-cloud dc-b" src="imgs/cloud-b.webp" alt="" loading="eager">
+
+    <!-- airliner silhouette crossing the dawn -->
+    <div class="hero-jet">
+      <div class="jet-inner">
+        <span class="trail trail-a"></span>
+        <span class="trail trail-b"></span>
+        <svg class="jet-svg" viewBox="0 0 280 90">
+          <defs>
+            <linearGradient id="jetBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4A2A6E"/>
+              <stop offset=".55" stop-color="#1B0640"/>
+              <stop offset="1" stop-color="#12032E"/>
+            </linearGradient>
+            <linearGradient id="jetRim" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#FFC9A8" stop-opacity="0"/>
+              <stop offset=".45" stop-color="#FFC9A8" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#FFE4CE" stop-opacity=".95"/>
+            </linearGradient>
+            <radialGradient id="jetExhaust" cx=".35" cy=".5" r=".65">
+              <stop offset="0" stop-color="#FFD9A8" stop-opacity=".95"/>
+              <stop offset=".5" stop-color="#FF8E76" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#FF8E76" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- tailplane -->
+          <path d="M74 47 L34 57 Q30 58 33 54 L62 44 Z" fill="#1B0640"/>
+          <!-- tail fin, swept back -->
+          <path d="M90 44 L58 10 Q55 6 62 6 L72 7 Q76 7 78 11 L102 43 Z" fill="url(#jetBody)"/>
+          <circle class="beacon" cx="62" cy="8" r="2.6" fill="#FF5A5A"/>
+          <!-- fuselage -->
+          <path d="M42 48 Q44 44 56 42 L106 37 Q170 32 226 33 Q252 34 264 42 Q268 45 264 49 Q252 57 220 60 L98 64 Q58 63 44 54 Q40 51 42 48 Z" fill="url(#jetBody)"/>
+          <!-- top rim light -->
+          <path d="M56 42 L106 37 Q170 32 226 33 Q248 34 261 41" fill="none" stroke="url(#jetRim)" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- cockpit glass -->
+          <path d="M247 38 Q256 39 261 43 L251 44 Q246 42 247 38 Z" fill="#FFE0C4" opacity=".9"/>
+          <!-- lit cabin windows -->
+          <line class="jet-windows" x1="104" y1="46" x2="236" y2="42" stroke="#FFD9A8" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2.6 6.5" opacity=".85"/>
+          <!-- wing, swept toward viewer -->
+          <path d="M162 58 L104 80 Q97 82 100 75 L138 54 Z" fill="#160535"/>
+          <!-- engine nacelle + glowing exhaust -->
+          <ellipse cx="128" cy="70" rx="17" ry="7.5" fill="#1B0640"/>
+          <ellipse cx="143" cy="70" rx="3.4" ry="6" fill="#2E1157"/>
+          <circle class="eng-glow" cx="112" cy="70" r="9" fill="url(#jetExhaust)"/>
+        </svg>
+      </div>
+    </div>
   </div>
-  <!-- flying plane -->
-  <div class="hero-plane" aria-hidden="true">
-    <svg viewBox="0 0 120 40" class="hero-plane-svg">
-      <path d="M4 26 Q30 20 58 18 L82 6 Q86 4 88 8 L76 19 L104 18 Q112 18 116 22 Q112 26 104 26 L40 30 Q20 31 4 26 Z" fill="currentColor"/>
-      <circle cx="50" cy="23" r="1.6" fill="#F5F8FF"/><circle cx="58" cy="22.5" r="1.6" fill="#F5F8FF"/><circle cx="66" cy="22" r="1.6" fill="#F5F8FF"/>
-    </svg>
-    <span class="contrail"></span>
+
+  <!-- futuristic flight-deck readout -->
+  <div class="hud" aria-hidden="true" dir="ltr">
+    <span class="hud-live">HYT-2019</span>
+    <span>ALT 38,000 FT</span>
+    <span>MACH 0.85</span>
+    <span>HDG 042°</span>
   </div>
 
   <div class="container hero-inner">
