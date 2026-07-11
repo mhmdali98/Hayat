@@ -195,6 +195,15 @@
   const savedLang = localStorage.getItem("hayat-lang");
   if (savedLang === "en") applyLang("en");
 
+  /* ─────────── DAY / NIGHT THEME ─────────── */
+  const themeBtn = $("#themeBtn");
+  const applyTheme = day => {
+    document.body.classList.toggle("day", day);
+    localStorage.setItem("hayat-theme", day ? "day" : "night");
+  };
+  themeBtn?.addEventListener("click", () => applyTheme(!document.body.classList.contains("day")));
+  if (localStorage.getItem("hayat-theme") === "day") applyTheme(true);
+
   /* ─────────── SEARCH WIDGET (ticket card) ─────────── */
   const searchCard = $("#searchCard");
   if (searchCard) {
@@ -319,6 +328,57 @@
     }, reduceMotion ? 60 : 1300);
   });
 
+  /* ─────────── OFFERS COUNTDOWN (rolls over every Saturday midnight) ─────────── */
+  const countdown = $("#countdown");
+  if (countdown) {
+    const cdD = $("#cdD"), cdH = $("#cdH"), cdM = $("#cdM"), cdS = $("#cdS");
+    const pad = n => String(n).padStart(2, "0");
+    const nextDeadline = () => {
+      const now = new Date();
+      const end = new Date(now);
+      const days = (6 - now.getDay() + 7) % 7;   // Saturday
+      end.setDate(now.getDate() + days);
+      end.setHours(23, 59, 59, 0);
+      if (end <= now) end.setDate(end.getDate() + 7);
+      return end;
+    };
+    let deadline = nextDeadline();
+    const tickCd = () => {
+      let diff = deadline - Date.now();
+      if (diff <= 0) { deadline = nextDeadline(); diff = deadline - Date.now(); }
+      cdD.textContent = pad(Math.floor(diff / 864e5));
+      cdH.textContent = pad(Math.floor(diff / 36e5) % 24);
+      cdM.textContent = pad(Math.floor(diff / 6e4) % 60);
+      cdS.textContent = pad(Math.floor(diff / 1e3) % 60);
+    };
+    tickCd();
+    setInterval(tickCd, 1000);
+  }
+
+  /* ─────────── BUDGET CALCULATOR ─────────── */
+  const budgetRange = $("#budgetRange");
+  if (budgetRange) {
+    const budgetVal = $("#budgetVal");
+    const chips = $$(".bchip");
+    const countEl = $("#budgetCount b");
+    const updateBudget = () => {
+      const val = +budgetRange.value;
+      budgetVal.textContent = "$" + val.toLocaleString("en-US");
+      const pct = ((val - budgetRange.min) / (budgetRange.max - budgetRange.min)) * 100;
+      budgetRange.style.setProperty("--fill", pct + "%");
+      let n = 0;
+      chips.forEach(c => {
+        const ok = +c.dataset.price <= val;
+        c.classList.toggle("on", ok);
+        c.classList.toggle("off", !ok);
+        if (ok) n++;
+      });
+      countEl.textContent = n;
+    };
+    budgetRange.addEventListener("input", updateBudget);
+    updateBudget();
+  }
+
   /* ─────────── COUNTERS ─────────── */
   const counterIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -371,6 +431,23 @@
     });
   }
 
+  /* ─────────── FAQ ACCORDION ─────────── */
+  const faqItems = $$(".faq-item");
+  faqItems.forEach(item => {
+    const q = $(".faq-q", item);
+    q.addEventListener("click", () => {
+      const wasOpen = item.classList.contains("open");
+      faqItems.forEach(i => {
+        i.classList.remove("open");
+        $(".faq-q", i).setAttribute("aria-expanded", "false");
+      });
+      if (!wasOpen) {
+        item.classList.add("open");
+        q.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
   /* ─────────── TESTIMONIALS SLIDER ─────────── */
   const slides = $$(".t-slide");
   const dots = $$(".t-dotbtn");
@@ -389,5 +466,10 @@
 
   updateRoutePlane();
   addEventListener("resize", updateRoutePlane);
+
+  /* ─────────── PWA ─────────── */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
 
 })();

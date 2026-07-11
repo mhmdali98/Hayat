@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — ضللت مسار الرحلة | الحيَـاة Hayat</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="imgs/ico-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lavender:#F5F8FF;--sunset:#FFB4A4;--purple:#250353;--night:#0F0526;
+  --grad-btn:linear-gradient(120deg,#FF9F8A,#A855F7 60%,#6D28D9);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100svh;font-family:'Tajawal',system-ui,sans-serif;color:var(--lavender);
+  background:var(--night) url("imgs/hero-sky.jpg") center bottom/cover no-repeat fixed;
+  display:grid;place-items:center;text-align:center;padding:24px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:640px}
+.code{
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(6rem,20vw,10rem);line-height:1;
+  background:linear-gradient(115deg,#FFB4A4,#F2A0C0 48%,#B794F6);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;letter-spacing:.02em;
+}
+.strip{
+  display:inline-flex;gap:8px;margin-bottom:18px;font-family:'Poppins',sans-serif;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;color:rgba(245,248,255,.6);
+}
+.strip span{padding:6px 13px;border:1px solid rgba(245,248,255,.16);border-radius:99px;background:rgba(15,5,38,.3);backdrop-filter:blur(8px)}
+h1{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:900;margin-top:10px}
+p{color:rgba(245,248,255,.75);margin:14px auto 30px;max-width:44ch;line-height:1.9}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;color:#fff;
+  text-decoration:none;background:var(--grad-btn);border-radius:99px;padding:15px 34px;
+  box-shadow:0 14px 34px -12px rgba(168,85,247,.6);transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.plane{
+  width:min(300px,60vw);margin:0 auto 8px;color:rgba(245,248,255,.85);
+  animation:wander 7s ease-in-out infinite alternate;
+  filter:drop-shadow(0 8px 24px rgba(15,5,38,.6));
+}
+@keyframes wander{
+  0%{transform:translate(-14px,6px) rotate(-4deg)}
+  100%{transform:translate(14px,-8px) rotate(5deg)}
+}
+.dashes{
+  stroke:rgba(245,248,255,.4);stroke-width:1.6;fill:none;
+  stroke-dasharray:5 8;stroke-linecap:round;
+  animation:dash 2.2s linear infinite;
+}
+@keyframes dash{to{stroke-dashoffset:-26}}
+@media (prefers-reduced-motion:reduce){.plane,.dashes{animation:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="strip" dir="ltr"><span>FLIGHT HYT-404</span><span>GATE NOT FOUND</span><span>STATUS: LOST</span></div>
+  <svg class="plane" viewBox="0 0 300 90" aria-hidden="true">
+    <path class="dashes" d="M6 62 C60 20 120 78 180 44 C220 22 260 40 294 28"/>
+    <g transform="translate(258 10) rotate(14)" fill="currentColor">
+      <path d="M30 16v-2l-11-7V2.1A2.1 2.1 0 0 0 16.9 0A2.1 2.1 0 0 0 14.8 2.1V7L4 14v2l10.8-3.4V26l-2.7 2v2l4.8-1.4L21.6 30v-2l-2.7-2V12.6z" transform="scale(1.2)"/>
+    </g>
+  </svg>
+  <div class="code" dir="ltr">404</div>
+  <h1>يبدو أنك ضللت مسار الرحلة ✈️</h1>
+  <p>الصفحة التي تبحث عنها أقلعت إلى وجهة مجهولة أو لم تكن موجودة أصلاً. لا تقلق — برج المراقبة لدينا سيعيدك إلى المسار الصحيح.</p>
+  <a class="btn" href="./">العودة إلى بوابة الصعود الرئيسية</a>
+</main>
+</body>
+</html>
