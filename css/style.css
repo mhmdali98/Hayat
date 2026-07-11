@@ -204,52 +204,104 @@ html[dir="rtl"] .mobile-menu.open{clip-path:circle(150% at 50% 40px)}
 .btn-sm{padding:9px 20px;font-size:.88rem}
 @media(max-width:920px){.nav .btn-sm{display:none}.nav-links{display:none}.burger{display:flex}}
 
-/* ═══════════ HERO ═══════════ */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + 22px);padding-bottom:110px;color:var(--ink);position:relative;overflow:hidden}
+/* ═══════════ HERO — stratosphere at dawn ═══════════ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + 22px);padding-bottom:110px;color:var(--lavender);position:relative;overflow:hidden}
 .hero-inner{position:relative;z-index:3}
 .hero-copy{max-width:720px}
 .badge{
   display:inline-block;font-weight:700;font-size:.85rem;
-  background:rgba(37,3,83,.08);border:1px solid rgba(37,3,83,.16);
-  color:var(--purple);border-radius:99px;padding:8px 18px;margin-bottom:22px;
+  background:rgba(245,248,255,.08);border:1px solid rgba(245,248,255,.22);
+  color:var(--lavender);border-radius:99px;padding:8px 18px;margin-bottom:22px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
-.hero-title{font-size:clamp(2.5rem,6.4vw,4.6rem);font-weight:900;line-height:1.18;color:var(--purple);letter-spacing:-.5px}
+.hero-title{font-size:clamp(2.5rem,6.4vw,4.6rem);font-weight:900;line-height:1.18;color:var(--lavender);letter-spacing:-.5px;text-shadow:0 4px 40px rgba(15,5,38,.55)}
 .hero-title .line{display:block}
 .grad-text{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* deeper gradient on the light dawn sky for contrast */
-.hero .grad-text{background:linear-gradient(115deg,#D94F35 0%,#8B2FC9 52%,#3B1180 100%);-webkit-background-clip:text;background-clip:text}
-.hero-sub{font-size:clamp(1.02rem,1.6vw,1.22rem);color:rgba(28,15,63,.72);max-width:56ch;margin-top:18px}
+/* bright dawn gradient glowing against the dark sky */
+.hero .grad-text{background:linear-gradient(115deg,#FFB4A4 0%,#F2A0C0 48%,#B794F6 100%);-webkit-background-clip:text;background-clip:text;text-shadow:none}
+.hero-sub{font-size:clamp(1.02rem,1.6vw,1.22rem);color:rgba(245,248,255,.8);max-width:56ch;margin-top:18px;text-shadow:0 2px 24px rgba(15,5,38,.5)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.hero .btn-ghost{color:var(--purple)}
+.hero .btn-ghost{color:var(--lavender);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 
-/* clouds */
-.clouds{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
-.cloud{position:absolute;color:rgba(255,255,255,.85);filter:blur(1px);animation:floaty 9s ease-in-out infinite alternate}
-.cloud-1{width:250px;top:16%;inset-inline-start:6%;opacity:.9}
-.cloud-2{width:340px;top:8%;inset-inline-end:12%;opacity:.7;animation-delay:-3s;animation-duration:12s}
-.cloud-3{width:190px;bottom:30%;inset-inline-start:38%;opacity:.55;animation-delay:-6s}
-.cloud-4{width:290px;bottom:12%;inset-inline-end:4%;opacity:.8;animation-delay:-2s;animation-duration:11s}
-@keyframes floaty{from{transform:translateY(-8px)}to{transform:translateY(14px)}}
-@media(max-width:680px){
-  .cloud{opacity:.35 !important;filter:blur(3px)}
-  .cloud-3{display:none}
+/* photographic stratosphere backdrop */
+.hero-bg{
+  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  background:#12032E url("../imgs/hero-sky.jpg") center bottom/cover no-repeat;
 }
+/* extra twinkling stars over the baked ones */
+.hero-stars{position:absolute;inset:0 0 48% 0}
+.hero-stars::before,.hero-stars::after{
+  content:"";position:absolute;width:2.5px;height:2.5px;border-radius:50%;background:#fff;
+  box-shadow:6vw 8vh 0 0 rgba(255,255,255,.8), 18vw 4vh 0 1px rgba(255,255,255,.5), 29vw 13vh 0 0 rgba(255,255,255,.75),
+             41vw 6vh 0 0 rgba(255,255,255,.5), 53vw 16vh 0 1px rgba(255,255,255,.7), 64vw 3vh 0 0 rgba(255,255,255,.55),
+             76vw 11vh 0 0 rgba(255,255,255,.8), 87vw 7vh 0 1px rgba(255,255,255,.5), 94vw 15vh 0 0 rgba(255,255,255,.65),
+             11vw 19vh 0 0 rgba(255,255,255,.45), 47vw 23vh 0 0 rgba(255,255,255,.5), 71vw 21vh 0 0 rgba(255,255,255,.4);
+  animation:twinkle 3.8s ease-in-out infinite alternate;
+}
+.hero-stars::after{animation-delay:-1.9s;transform:translate(2.5vw,1.5vh)}
 
-/* hero plane */
-.hero-plane{position:absolute;top:20%;inset-inline-start:-15%;z-index:2;color:var(--purple);animation:fly 26s linear infinite;pointer-events:none}
-.hero-plane-svg{width:clamp(70px,9vw,120px);opacity:.9}
-.contrail{position:absolute;top:60%;inset-inline-end:96%;width:34vw;height:2px;background:linear-gradient(to var(--dir-end,left),rgba(37,3,83,.35),transparent);border-radius:99px}
-html[dir="rtl"] .contrail{--dir-end:right}
-@keyframes fly{
-  0%{transform:translateX(0) translateY(0)}
-  100%{transform:translateX(140vw) translateY(-90px)}
+/* drifting photographic cloud wisps (parallax depth) */
+.drift-cloud{position:absolute;pointer-events:none}
+.dc-a{width:46vw;min-width:380px;bottom:20%;inset-inline-start:-6%;opacity:.5;filter:blur(1.5px);animation:driftA 90s linear infinite alternate}
+.dc-b{width:34vw;min-width:300px;top:30%;inset-inline-end:-8%;opacity:.32;filter:blur(2.5px);animation:driftB 110s linear infinite alternate}
+@keyframes driftA{from{transform:translateX(0)}to{transform:translateX(9vw)}}
+@keyframes driftB{from{transform:translateX(0)}to{transform:translateX(-11vw)}}
+@media(max-width:680px){.dc-a{opacity:.3}.dc-b{display:none}}
+
+/* the airliner crossing the dawn */
+.hero-jet{
+  position:absolute;top:23%;inset-inline-start:0;z-index:1;
+  animation:jetfly 44s linear infinite;
+  filter:drop-shadow(0 8px 26px rgba(15,5,38,.5));
 }
-html[dir="rtl"] .hero-plane{inset-inline-start:auto;inset-inline-end:-15%;animation-name:flyRtl}
-html[dir="rtl"] .hero-plane-svg{transform:scaleX(-1)}
-@keyframes flyRtl{
-  0%{transform:translateX(0) translateY(0)}
-  100%{transform:translateX(-140vw) translateY(-90px)}
+@keyframes jetfly{
+  0%{transform:translate(-28vw,3.5vh) scale(.82)}
+  100%{transform:translate(128vw,-4vh) scale(1)}
 }
+html[dir="rtl"] .hero-jet{animation-name:jetflyRtl}
+@keyframes jetflyRtl{
+  0%{transform:translate(28vw,3.5vh) scale(.82)}
+  100%{transform:translate(-128vw,-4vh) scale(1)}
+}
+html[dir="rtl"] .jet-inner{transform:scaleX(-1)}
+.jet-inner{position:relative;animation:jetbob 7s ease-in-out infinite alternate}
+@keyframes jetbob{from{translate:0 -6px}to{translate:0 8px}}
+.jet-svg{width:clamp(190px,23vw,330px);height:auto}
+.jet-svg .beacon{animation:beacon 1.6s steps(2,jump-none) infinite}
+@keyframes beacon{0%{opacity:1}50%{opacity:.15}}
+.jet-svg .eng-glow{animation:engpulse 2.8s ease-in-out infinite alternate}
+@keyframes engpulse{from{opacity:.75}to{opacity:1}}
+/* condensation trails streaming behind the engines.
+   Physical (LTR) coords on purpose: .jet-inner is mirrored wholesale in RTL. */
+.trail{
+  position:absolute;height:3px;border-radius:99px;right:55%;
+  background:linear-gradient(to left,rgba(255,220,200,.75),rgba(245,248,255,.28) 40%,transparent);
+  filter:blur(1px);
+}
+.trail-a{top:76%;width:46vw}
+.trail-b{top:50%;width:30vw;height:2px;opacity:.55;right:78%}
+
+/* flight-deck readout chips */
+/* physical sides: the copy column hugs the page-start side, so the HUD
+   always goes to the opposite (page-end) side regardless of the chip's own dir */
+.hud{
+  position:absolute;z-index:2;top:calc(var(--nav-h) + 18px);right:4%;
+  display:flex;gap:8px;font-family:var(--font-en);
+}
+html[dir="rtl"] .hud{right:auto;left:4%}
+.hud span{
+  font-size:.6rem;font-weight:600;letter-spacing:.16em;color:rgba(245,248,255,.62);
+  padding:6px 13px;border:1px solid rgba(245,248,255,.14);border-radius:99px;
+  background:rgba(15,5,38,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  white-space:nowrap;
+}
+.hud-live::before{
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:#7CFFB2;margin-right:7px;vertical-align:1px;
+  box-shadow:0 0 8px rgba(124,255,178,.9);
+  animation:beacon 2s steps(2,jump-none) infinite;
+}
+@media(max-width:900px){.hud{display:none}}
 
 /* ═══════════ SEARCH CARD — flight-ticket widget ═══════════ */
 .search-card{
@@ -392,15 +444,16 @@ html[dir="rtl"] .hero-plane-svg{transform:scaleX(-1)}
 .scroll-hint{
   position:absolute;bottom:26px;inset-inline-start:50%;translate:-50% 0;z-index:3;
   display:flex;flex-direction:column;align-items:center;gap:8px;
-  color:rgba(28,15,63,.6);font-size:.8rem;font-weight:600;
+  color:rgba(245,248,255,.75);font-size:.8rem;font-weight:600;
+  text-shadow:0 2px 14px rgba(15,5,38,.6);
 }
 html[dir="rtl"] .scroll-hint{translate:50% 0}
 .scroll-hint i{
-  width:24px;height:38px;border:2px solid rgba(28,15,63,.4);border-radius:14px;position:relative;
+  width:24px;height:38px;border:2px solid rgba(245,248,255,.45);border-radius:14px;position:relative;
 }
 .scroll-hint i::before{
   content:"";position:absolute;top:7px;left:50%;translate:-50% 0;width:4px;height:8px;border-radius:4px;
-  background:var(--violet);animation:wheel 1.6s ease-in-out infinite;
+  background:var(--sunset);animation:wheel 1.6s ease-in-out infinite;
 }
 @keyframes wheel{0%{opacity:1;transform:translateY(0)}70%{opacity:0;transform:translateY(12px)}100%{opacity:0}}
 
@@ -787,5 +840,5 @@ html[dir="rtl"] .toast.show{translate:50% 0}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
-  .hero-plane,.route-plane{display:none}
+  .hero-jet,.route-plane{display:none}
 }

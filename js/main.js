@@ -38,7 +38,7 @@
   const setSky = state => {
     if (document.body.dataset.sky !== state) document.body.dataset.sky = state;
   };
-  setSky("dawn");
+  setSky("dusk");
   const skyIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) setSky(e.target.dataset.sky);
