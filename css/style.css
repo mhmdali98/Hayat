@@ -206,7 +206,9 @@ html[dir="rtl"] .mobile-menu.open{clip-path:circle(150% at 50% 40px)}
 
 /* ═══════════ HERO — stratosphere at dawn ═══════════ */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + 22px);padding-bottom:110px;color:var(--lavender);position:relative;overflow:hidden}
-.hero-inner{position:relative;z-index:3}
+/* !important guards against a stale cached main.js that used to set an
+   inline fade on this container — the booking card must never go see-through */
+.hero-inner{position:relative;z-index:3;opacity:1 !important;translate:0 0 !important}
 .hero-copy{max-width:720px}
 .badge{
   display:inline-block;font-weight:700;font-size:.85rem;
