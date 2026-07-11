@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الحيَـاة | Hayat Travel &amp; Tourism — رحلتك تبدأ من هنا</title>
+<meta name="description" content="الحياة للسياحة والسفر — وكالة سفر عراقية رائدة منذ 2019. تذاكر طيران، باقات سياحية، فنادق، تأشيرات، وتجارب سفر لا تُنسى.">
+<meta property="og:title" content="الحيَـاة | Hayat Travel &amp; Tourism">
+<meta property="og:description" content="الحياة رحلة… تستحق أن تُعاش. وكالة سفر عراقية رائدة منذ 2019.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%23250353' stroke-width='4'/%3E%3Cpath d='M18 38 L30 26 M22 40 L38 24 M30 42 L44 28' stroke='%23250353' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════ PRELOADER : بوابة الصعود ══════════ -->
+<div id="preloader" aria-hidden="true">
+  <div class="preloader-panel top"></div>
+  <div class="preloader-panel bottom"></div>
+  <div class="preloader-core">
+    <svg class="pre-logo" viewBox="0 0 120 120" fill="none">
+      <circle class="pre-circle" cx="60" cy="60" r="52" stroke="url(#preGrad)" stroke-width="5"/>
+      <g class="pre-mark" stroke="url(#preGrad)" stroke-width="6.5" stroke-linecap="round">
+        <path d="M30 74 L54 50"/>
+        <path d="M38 79 L74 43"/>
+        <path d="M55 82 L84 53"/>
+      </g>
+      <defs>
+        <linearGradient id="preGrad" x1="0" y1="0" x2="120" y2="120">
+          <stop offset="0" stop-color="#FFB4A4"/><stop offset=".55" stop-color="#B980D9"/><stop offset="1" stop-color="#4b1d95"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <p class="pre-word"><span data-ar="الحيَـاة" data-en="Hayat">الحيَـاة</span></p>
+    <p class="pre-tag" data-ar="جارٍ تجهيز بوابة الصعود…" data-en="Preparing your boarding gate…">جارٍ تجهيز بوابة الصعود…</p>
+    <div class="pre-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- ══════════ SKY LAYERS : رحلة الألوان ══════════ -->
+<div class="sky" aria-hidden="true">
+  <div class="sky-layer sky-dawn"></div>
+  <div class="sky-layer sky-dusk"></div>
+  <div class="sky-layer sky-night"></div>
+  <canvas id="stars"></canvas>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+</div>
+
+<!-- ══════════ FLIGHT PROGRESS RAIL ══════════ -->
+<aside class="flight-rail" aria-hidden="true">
+  <span class="rail-code">BGD</span>
+  <div class="rail-track">
+    <svg class="rail-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+  </div>
+  <span class="rail-code rail-code-end">✦</span>
+</aside>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="nav" id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="brand" aria-label="Hayat — الحياة">
+      <svg class="brand-mark" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="3.5"/>
+        <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+          <path d="M16 40 L29 27"/>
+          <path d="M21 43 L41 23"/>
+          <path d="M30 45 L46 29"/>
+        </g>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-ar">الحيَـاة</span>
+        <span class="brand-en">Hayat</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="التنقل الرئيسي">
+      <a href="#hero" class="nav-link is-active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="#about" class="nav-link" data-ar="عن الحياة" data-en="About">عن الحياة</a>
+      <a href="#services" class="nav-link" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+      <a href="#destinations" class="nav-link" data-ar="الوجهات" data-en="Destinations">الوجهات</a>
+      <a href="#journey" class="nav-link" data-ar="رحلتك" data-en="Your Journey">رحلتك</a>
+      <a href="#contact" class="nav-link" data-ar="تواصل" data-en="Contact">تواصل</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-btn" id="langBtn" aria-label="Switch language">EN</button>
+      <a href="#contact" class="btn btn-primary btn-sm" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+      <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MOBILE MENU ══════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="قائمة الجوال">
+    <a href="#hero" class="mm-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+    <a href="#about" class="mm-link" data-ar="عن الحياة" data-en="About">عن الحياة</a>
+    <a href="#services" class="mm-link" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+    <a href="#destinations" class="mm-link" data-ar="الوجهات" data-en="Destinations">الوجهات</a>
+    <a href="#journey" class="mm-link" data-ar="رحلتك" data-en="Your Journey">رحلتك</a>
+    <a href="#contact" class="mm-link" data-ar="تواصل" data-en="Contact">تواصل</a>
+  </nav>
+  <a href="#contact" class="btn btn-primary mm-cta" data-ar="✈ احجز رحلتك الآن" data-en="✈ Book Your Trip">✈ احجز رحلتك الآن</a>
+  <div class="mm-clouds" aria-hidden="true"></div>
+</div>
+
+<main>
+
+<!-- ══════════ HERO : الفجر ══════════ -->
+<section class="hero" id="hero" data-sky="dawn">
+  <!-- clouds -->
+  <div class="clouds" aria-hidden="true">
+    <svg class="cloud cloud-1" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
+    <svg class="cloud cloud-2" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
+    <svg class="cloud cloud-3" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
+    <svg class="cloud cloud-4" viewBox="0 0 200 60"><ellipse cx="60" cy="40" rx="55" ry="20" fill="currentColor"/><ellipse cx="110" cy="30" rx="45" ry="22" fill="currentColor"/><ellipse cx="155" cy="42" rx="40" ry="16" fill="currentColor"/></svg>
+  </div>
+  <!-- flying plane -->
+  <div class="hero-plane" aria-hidden="true">
+    <svg viewBox="0 0 120 40" class="hero-plane-svg">
+      <path d="M4 26 Q30 20 58 18 L82 6 Q86 4 88 8 L76 19 L104 18 Q112 18 116 22 Q112 26 104 26 L40 30 Q20 31 4 26 Z" fill="currentColor"/>
+      <circle cx="50" cy="23" r="1.6" fill="#F5F8FF"/><circle cx="58" cy="22.5" r="1.6" fill="#F5F8FF"/><circle cx="66" cy="22" r="1.6" fill="#F5F8FF"/>
+    </svg>
+    <span class="contrail"></span>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="badge reveal" data-ar="✈ وكالة سفر عراقية رائدة منذ 2019" data-en="✈ Iraq's pioneering travel agency since 2019">✈ وكالة سفر عراقية رائدة منذ 2019</span>
+      <h1 class="hero-title">
+        <span class="line reveal d1" data-ar="الحيـاة رحلـة…" data-en="Life is a journey…">الحيـاة رحلـة…</span>
+        <span class="line grad-text reveal d2" data-ar="فلنجعلها لا تُنسى" data-en="let's make it unforgettable">فلنجعلها لا تُنسى</span>
+      </h1>
+      <p class="hero-sub reveal d3" data-ar="من بغداد إلى كل مطارات العالم — نصنع لك تجربة سفر متكاملة: تذاكر، تأشيرات، فنادق، وباقات مصمَّمة على قياس أحلامك." data-en="From Baghdad to every airport on earth — a complete travel experience: flights, visas, hotels, and packages tailored to your dreams.">من بغداد إلى كل مطارات العالم — نصنع لك تجربة سفر متكاملة: تذاكر، تأشيرات، فنادق، وباقات مصمَّمة على قياس أحلامك.</p>
+      <div class="hero-ctas reveal d4">
+        <a href="#destinations" class="btn btn-primary" data-ar="استكشف الوجهات" data-en="Explore Destinations">استكشف الوجهات</a>
+        <a href="#journey" class="btn btn-ghost" data-ar="كيف تبدأ رحلتك؟" data-en="How it works">كيف تبدأ رحلتك؟</a>
+      </div>
+    </div>
+
+    <!-- Search widget : بطاقة صعود -->
+    <div class="search-card reveal d5" id="searchCard">
+      <div class="search-tabs" role="tablist">
+        <button class="stab is-active" data-ar="✈ طيران" data-en="✈ Flights">✈ طيران</button>
+        <button class="stab" data-ar="🏨 فنادق" data-en="🏨 Hotels">🏨 فنادق</button>
+        <button class="stab" data-ar="🧳 باقات" data-en="🧳 Packages">🧳 باقات</button>
+        <button class="stab" data-ar="🛂 تأشيرات" data-en="🛂 Visas">🛂 تأشيرات</button>
+      </div>
+      <form class="search-form" id="searchForm">
+        <div class="sfield">
+          <label data-ar="من" data-en="From">من</label>
+          <input type="text" value="بغداد BGD" data-ar-ph="مدينة المغادرة" data-en-ph="Departure city">
+        </div>
+        <div class="swap" aria-hidden="true">⇄</div>
+        <div class="sfield">
+          <label data-ar="إلى" data-en="To">إلى</label>
+          <input type="text" data-ar-ph="إلى أين تحلم؟" data-en-ph="Where do you dream?" placeholder="إلى أين تحلم؟">
+        </div>
+        <div class="sfield">
+          <label data-ar="التاريخ" data-en="Date">التاريخ</label>
+          <input type="date">
+        </div>
+        <div class="sfield">
+          <label data-ar="المسافرون" data-en="Travelers">المسافرون</label>
+          <select>
+            <option data-ar="1 مسافر" data-en="1 traveler">1 مسافر</option>
+            <option data-ar="2 مسافران" data-en="2 travelers">2 مسافران</option>
+            <option data-ar="عائلة (3-5)" data-en="Family (3–5)">عائلة (3-5)</option>
+            <option data-ar="مجموعة +6" data-en="Group 6+">مجموعة +6</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary search-btn" data-ar="ابحث عن رحلتك" data-en="Find your trip">ابحث عن رحلتك</button>
+      </form>
+      <div class="search-perforation" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <a href="#partners" class="scroll-hint" aria-label="مرر للأسفل">
+    <span data-ar="اربط حزام الأمان وابدأ الرحلة" data-en="Fasten your seatbelt &amp; scroll">اربط حزام الأمان وابدأ الرحلة</span>
+    <i></i>
+  </a>
+</section>
+
+<!-- cloud divider -->
+<div class="cloud-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0,60 C120,100 240,20 400,55 C560,90 640,10 820,45 C980,75 1100,15 1240,50 C1330,72 1400,40 1440,55 L1440,110 L0,110 Z" fill="currentColor"/></svg>
+</div>
+
+<!-- ══════════ PARTNERS MARQUEE : الغسق ══════════ -->
+<section class="partners" id="partners" data-sky="dusk">
+  <p class="partners-label" data-ar="نحجز لك مع كبرى شركات الطيران العالمية" data-en="We book you with the world's leading airlines">نحجز لك مع كبرى شركات الطيران العالمية</p>
+  <div class="marquee" dir="ltr">
+    <div class="marquee-track">
+      <span>Qatar Airways</span><i>✈</i><span>Emirates</span><i>✈</i><span>Turkish Airlines</span><i>✈</i><span>Iraqi Airways</span><i>✈</i><span>Etihad</span><i>✈</i><span>Royal Jordanian</span><i>✈</i><span>flydubai</span><i>✈</i><span>EgyptAir</span><i>✈</i><span>Pegasus</span><i>✈</i><span>MEA</span><i>✈</i>
+      <span>Qatar Airways</span><i>✈</i><span>Emirates</span><i>✈</i><span>Turkish Airlines</span><i>✈</i><span>Iraqi Airways</span><i>✈</i><span>Etihad</span><i>✈</i><span>Royal Jordanian</span><i>✈</i><span>flydubai</span><i>✈</i><span>EgyptAir</span><i>✈</i><span>Pegasus</span><i>✈</i><span>MEA</span><i>✈</i>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about section" id="about" data-sky="dusk">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy">
+        <span class="eyebrow reveal" data-ar="قصتنا" data-en="Our Story">قصتنا</span>
+        <h2 class="h2 reveal d1">
+          <span data-ar="من بغداد…" data-en="From Baghdad…">من بغداد…</span>
+          <span class="grad-text" data-ar="إلى سماء العالم" data-en="to the world's skies">إلى سماء العالم</span>
+        </h2>
+        <p class="lead reveal d2" data-ar="منذ انطلاقتها عام 2019، كانت «الحياة» واحدة من الشركات الرائدة في العراق، تحمل شغفاً حقيقياً لاستكشاف العالم. نحن أكثر من مجرد وكالة سفر — نحن شريك رحلتك، نصنع قصصاً شخصية مليئة بذكريات لا تُنسى، سواء في رحلة استجمام أو مغامرة عمل." data-en="Since 2019, Hayat has been one of Iraq's pioneering companies, carrying a genuine passion for exploring the world. We're more than a travel agency — we're your travel partner, crafting personal stories full of unforgettable memories, on leisure trips and business adventures alike.">منذ انطلاقتها عام 2019، كانت «الحياة» واحدة من الشركات الرائدة في العراق، تحمل شغفاً حقيقياً لاستكشاف العالم. نحن أكثر من مجرد وكالة سفر — نحن شريك رحلتك، نصنع قصصاً شخصية مليئة بذكريات لا تُنسى، سواء في رحلة استجمام أو مغامرة عمل.</p>
+
+        <div class="vm-cards">
+          <article class="vm-card reveal d3">
+            <h3 data-ar="🔭 رؤيتنا" data-en="🔭 Our Vision">🔭 رؤيتنا</h3>
+            <p data-ar="أن نكون الخيار الأول للمسافرين الباحثين عن استكشاف العالم وعيش رحلات لا تُنسى." data-en="To be the first choice for travelers seeking to explore the world and experience unforgettable journeys.">أن نكون الخيار الأول للمسافرين الباحثين عن استكشاف العالم وعيش رحلات لا تُنسى.</p>
+          </article>
+          <article class="vm-card reveal d4">
+            <h3 data-ar="🧭 رسالتنا" data-en="🧭 Our Mission">🧭 رسالتنا</h3>
+            <p data-ar="تجارب سفر استثنائية وآمنة، أفضل العروض والخدمات السياحية، راحة تامة ودعم كامل يضمن لك رحلة مريحة." data-en="Exceptional, safe travel experiences, the best deals and tourism services, full comfort and complete support for a smooth journey.">تجارب سفر استثنائية وآمنة، أفضل العروض والخدمات السياحية، راحة تامة ودعم كامل يضمن لك رحلة مريحة.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="stats-panel reveal d2">
+        <div class="stat">
+          <strong class="counter" data-target="50" data-suffix="K+">0</strong>
+          <span data-ar="مسافر سعيد" data-en="Happy travelers">مسافر سعيد</span>
+        </div>
+        <div class="stat">
+          <strong class="counter" data-target="40" data-suffix="+">0</strong>
+          <span data-ar="وجهة حول العالم" data-en="Destinations worldwide">وجهة حول العالم</span>
+        </div>
+        <div class="stat">
+          <strong class="counter" data-target="7" data-suffix="+">0</strong>
+          <span data-ar="سنوات من الخبرة" data-en="Years of experience">سنوات من الخبرة</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span data-ar="دعم على مدار الساعة" data-en="Around-the-clock support">دعم على مدار الساعة</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand evolution timeline -->
+    <div class="timeline reveal">
+      <h3 class="timeline-title" data-ar="رحلة علامتنا عبر السنين" data-en="Our brand's journey through the years">رحلة علامتنا عبر السنين</h3>
+      <div class="timeline-track">
+        <div class="t-step">
+          <span class="t-dot"></span>
+          <b>2019</b>
+          <p data-ar="الانطلاقة الأولى من بغداد" data-en="First take-off from Baghdad">الانطلاقة الأولى من بغداد</p>
+        </div>
+        <div class="t-step">
+          <span class="t-dot"></span>
+          <b>2019 – 2022</b>
+          <p data-ar="HAYAT.iq — التوسع الرقمي" data-en="HAYAT.iq — going digital">HAYAT.iq — التوسع الرقمي</p>
+        </div>
+        <div class="t-step">
+          <span class="t-dot"></span>
+          <b>2022 – 2024</b>
+          <p data-ar="هوية أجرأ وألوان الغروب" data-en="A bolder identity, sunset hues">هوية أجرأ وألوان الغروب</p>
+        </div>
+        <div class="t-step t-now">
+          <span class="t-dot"></span>
+          <b data-ar="اليوم" data-en="Today">اليوم</b>
+          <p data-ar="الحيَـاة — سماء بنفسجية بلا حدود" data-en="Hayat — a boundless purple sky">الحيَـاة — سماء بنفسجية بلا حدود</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section class="services section" id="services" data-sky="dusk">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="خدماتنا" data-en="Our Services">خدماتنا</span>
+      <h2 class="h2 reveal d1" data-ar="كل ما تحتاجه رحلتك… في مكان واحد" data-en="Everything your journey needs… in one place">كل ما تحتاجه رحلتك… في مكان واحد</h2>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg></div>
+        <h3 data-ar="تذاكر الطيران" data-en="Flight Tickets">تذاكر الطيران</h3>
+        <p data-ar="خيارات واسعة من مختلف شركات الطيران وبكل فئات الأسعار — نجد لك المقعد الأمثل دائماً." data-en="A wide range of airlines and fare classes — we always find you the perfect seat.">خيارات واسعة من مختلف شركات الطيران وبكل فئات الأسعار — نجد لك المقعد الأمثل دائماً.</p>
+      </article>
+      <article class="service-card reveal d1">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4l7 4v14M9 21v-4a3 3 0 0 1 6 0v4M9 10h.01M15 10h.01M12 13h.01"/></svg></div>
+        <h3 data-ar="حجز الفنادق" data-en="Hotel Booking">حجز الفنادق</h3>
+        <p data-ar="من الفنادق العائلية المريحة إلى المنتجعات الفاخرة — إقامة تلائم ذوقك وميزانيتك." data-en="From cozy family hotels to luxury resorts — stays that match your taste and budget.">من الفنادق العائلية المريحة إلى المنتجعات الفاخرة — إقامة تلائم ذوقك وميزانيتك.</p>
+      </article>
+      <article class="service-card reveal d2">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18Zm0 0c-2.5 2.4-4 5.5-4 9s1.5 6.6 4 9m0-18c2.5 2.4 4 5.5 4 9s-1.5 6.6-4 9M3.5 9h17M3.5 15h17"/></svg></div>
+        <h3 data-ar="الباقات السياحية" data-en="Tour Packages">الباقات السياحية</h3>
+        <p data-ar="برامج متكاملة مصمّمة بعناية: طيران + إقامة + جولات، لعائلتك أو لشهر عسلك أو لمغامرتك القادمة." data-en="Carefully crafted programs: flights + stays + tours, for your family, honeymoon, or next adventure.">برامج متكاملة مصمّمة بعناية: طيران + إقامة + جولات، لعائلتك أو لشهر عسلك أو لمغامرتك القادمة.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm4 6a2 2 0 1 0 0-4a2 2 0 0 0 0 4Zm-3 8c0-2.2 1.3-4 3-4s3 1.8 3 4M14 8h5M14 12h5M14 16h3"/></svg></div>
+        <h3 data-ar="التأشيرات السياحية" data-en="Visa Services">التأشيرات السياحية</h3>
+        <p data-ar="نتابع أوراقك خطوة بخطوة ونختصر لك الطريق نحو ختم الجواز — بدون تعقيد وبدون قلق." data-en="We handle your paperwork step by step and shorten the road to that passport stamp — zero stress.">نتابع أوراقك خطوة بخطوة ونختصر لك الطريق نحو ختم الجواز — بدون تعقيد وبدون قلق.</p>
+      </article>
+      <article class="service-card reveal d1">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m-8 0h8m-8 0H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3m-4 4v3m-4.5-3v3m9-3v3"/></svg></div>
+        <h3 data-ar="رحلات الأعمال" data-en="Corporate Travel">رحلات الأعمال</h3>
+        <p data-ar="حلول سفر احترافية للشركات والمؤتمرات والفعاليات — دقة في المواعيد وراحة لفريقك." data-en="Professional travel for companies, conferences and events — punctual, seamless, comfortable.">حلول سفر احترافية للشركات والمؤتمرات والفعاليات — دقة في المواعيد وراحة لفريقك.</p>
+      </article>
+      <article class="service-card reveal d2">
+        <div class="s-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3l8 4v5c0 5-3.4 8.4-8 9c-4.6-.6-8-4-8-9V7l8-4Zm-3 9l2 2l4-4"/></svg></div>
+        <h3 data-ar="دعم ومرافقة 24/7" data-en="24/7 Care">دعم ومرافقة 24/7</h3>
+        <p data-ar="من لحظة الحجز حتى عودتك للبيت — فريقنا معك على مدار الساعة أينما كنت في العالم." data-en="From booking until you're home again — our team is with you around the clock, anywhere on earth.">من لحظة الحجز حتى عودتك للبيت — فريقنا معك على مدار الساعة أينما كنت في العالم.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DESTINATIONS ══════════ -->
+<section class="destinations section" id="destinations" data-sky="night">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="وجهاتنا" data-en="Destinations">وجهاتنا</span>
+      <h2 class="h2 reveal d1" data-ar="إلى أين تحلم أن تسافر؟" data-en="Where do you dream of going?">إلى أين تحلم أن تسافر؟</h2>
+      <p class="section-sub reveal d2" data-ar="بطاقات مستوحاة من غروب الحياة البنفسجي — كل وجهة حكاية." data-en="Cards painted in Hayat's purple sunset — every destination is a story.">بطاقات مستوحاة من غروب الحياة البنفسجي — كل وجهة حكاية.</p>
+    </div>
+
+    <div class="dest-grid">
+
+      <!-- Istanbul -->
+      <article class="dest-card reveal" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skyIst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB4A4"/><stop offset=".5" stop-color="#c77fb4"/><stop offset="1" stop-color="#250353"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skyIst)"/>
+            <circle cx="290" cy="80" r="34" fill="#FFE0D6" opacity=".9"/>
+            <g fill="#17023a">
+              <rect x="0" y="200" width="400" height="60"/>
+              <path d="M60 200 V150 h8 V200Z M64 150 l-4-14 -4 14Z"/>
+              <path d="M150 200 v-45 a45 32 0 0 1 90 0 v45 Z"/>
+              <circle cx="195" cy="140" r="16"/>
+              <path d="M193 118 h4 v10 h-4z"/>
+              <path d="M120 200 V140 h7 V200Z M123.5 126 l-5-16 -5 16Z" transform="translate(10)"/>
+              <path d="M280 200 V145 h8 V200Z M284 145 l-4-15 -4 15Z"/>
+              <path d="M320 200 v-25 h60 v25Z"/>
+            </g>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M40 60 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="الأكثر طلباً 🔥" data-en="Most booked 🔥">الأكثر طلباً 🔥</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="إسطنبول" data-en="Istanbul">إسطنبول</h3>
+            <span class="dest-country" data-ar="تركيا" data-en="Türkiye">تركيا</span>
+          </div>
+          <p class="dest-meta" data-ar="5 أيام | 4 ليالٍ · طيران + فندق + جولات" data-en="5 days | 4 nights · flight + hotel + tours">5 أيام | 4 ليالٍ · طيران + فندق + جولات</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $499</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dubai -->
+      <article class="dest-card reveal d1" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skyDxb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC9B8"/><stop offset=".55" stop-color="#a06cc9"/><stop offset="1" stop-color="#1c0342"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skyDxb)"/>
+            <circle cx="110" cy="70" r="28" fill="#FFF0E8" opacity=".95"/>
+            <g fill="#17023a">
+              <rect x="0" y="205" width="400" height="55"/>
+              <path d="M200 205 L192 120 h-6 L180 205Z M196 120 L194 40 h-2 L190 120Z" transform="translate(6)"/>
+              <path d="M196 40 l2-18 2 18Z" transform="translate(4)"/>
+              <rect x="70" y="160" width="18" height="45"/>
+              <rect x="95" y="145" width="16" height="60"/>
+              <rect x="240" y="150" width="20" height="55"/>
+              <path d="M300 205 v-50 q25 -18 50 0 v50Z"/>
+              <rect x="130" y="170" width="14" height="35"/>
+            </g>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M330 55 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="عائلي ★" data-en="Family ★">عائلي ★</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="دبي" data-en="Dubai">دبي</h3>
+            <span class="dest-country" data-ar="الإمارات" data-en="UAE">الإمارات</span>
+          </div>
+          <p class="dest-meta" data-ar="4 أيام | 3 ليالٍ · طيران + فندق 5★" data-en="4 days | 3 nights · flight + 5★ hotel">4 أيام | 3 ليالٍ · طيران + فندق 5★</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $599</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cairo -->
+      <article class="dest-card reveal d2" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skyCai" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD3A8"/><stop offset=".5" stop-color="#e08f7a"/><stop offset="1" stop-color="#2d0a4e"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skyCai)"/>
+            <circle cx="200" cy="120" r="42" fill="#FFF3DC"/>
+            <g fill="#1d0538">
+              <rect x="0" y="210" width="400" height="50"/>
+              <path d="M90 210 L170 90 L250 210Z"/>
+              <path d="M225 210 L285 120 L345 210Z" opacity=".92"/>
+              <path d="M30 210 L75 150 L120 210Z" opacity=".85"/>
+            </g>
+            <g fill="#1d0538"><path d="M320 225 q6 -10 14 0 q6 -8 12 0Z" opacity=".9"/></g>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M60 55 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="تاريخ وسحر 𓂀" data-en="History &amp; magic 𓂀">تاريخ وسحر 𓂀</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="القاهرة" data-en="Cairo">القاهرة</h3>
+            <span class="dest-country" data-ar="مصر" data-en="Egypt">مصر</span>
+          </div>
+          <p class="dest-meta" data-ar="8 أيام | 7 ليالٍ · برنامج كامل" data-en="8 days | 7 nights · full program">8 أيام | 7 ليالٍ · برنامج كامل</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $749</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tokyo -->
+      <article class="dest-card reveal" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skyTyo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9b8ff"/><stop offset=".5" stop-color="#7d55c7"/><stop offset="1" stop-color="#170236"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skyTyo)"/>
+            <circle cx="310" cy="70" r="26" fill="#FFE8F0" opacity=".95"/>
+            <g>
+              <path d="M60 215 L200 95 L340 215Z" fill="#22074a"/>
+              <path d="M166 124 L200 95 L234 124 Q200 140 166 124Z" fill="#F5F8FF"/>
+            </g>
+            <g fill="#17023a">
+              <rect x="0" y="215" width="400" height="45"/>
+              <rect x="40" y="185" width="14" height="30"/>
+              <rect x="330" y="180" width="16" height="35"/>
+              <path d="M300 215 v-20 h30 v20Z"/>
+              <path d="M70 215 v-16 h26 v16Z"/>
+            </g>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M70 50 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="رحلة الخريف 🍁" data-en="Autumn trip 🍁">رحلة الخريف 🍁</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="طوكيو" data-en="Tokyo">طوكيو</h3>
+            <span class="dest-country" data-ar="اليابان" data-en="Japan">اليابان</span>
+          </div>
+          <p class="dest-meta" data-ar="8 أيام | 7 ليالٍ · مستوحاة من رحلة الخريف" data-en="8 days | 7 nights · the Autumn journey">8 أيام | 7 ليالٍ · مستوحاة من رحلة الخريف</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $1,599</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Santorini -->
+      <article class="dest-card reveal d1" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skySan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC1AE"/><stop offset=".5" stop-color="#b87fd0"/><stop offset="1" stop-color="#22064a"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skySan)"/>
+            <circle cx="90" cy="75" r="30" fill="#FFEDE3" opacity=".95"/>
+            <path d="M0 230 h400 v30 h-400Z" fill="#1a0440"/>
+            <path d="M0 232 q100 -10 200 0 t200 0 v28 h-400Z" fill="#2b0f56" opacity=".7"/>
+            <g fill="#F5F8FF">
+              <path d="M240 230 v-45 h30 v45Z"/>
+              <circle cx="255" cy="180" r="16"/>
+              <path d="M285 230 v-30 h26 v30Z"/>
+              <circle cx="298" cy="195" r="14"/>
+              <path d="M320 230 v-40 h24 v40Z"/>
+              <circle cx="332" cy="185" r="13"/>
+            </g>
+            <g fill="#2b0f56"><rect x="250" y="196" width="9" height="12" rx="4"/><rect x="293" y="206" width="8" height="10" rx="4"/><rect x="327" y="200" width="8" height="11" rx="4"/></g>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M60 120 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="رومانسية 💜" data-en="Romantic 💜">رومانسية 💜</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="سانتوريني" data-en="Santorini">سانتوريني</h3>
+            <span class="dest-country" data-ar="اليونان" data-en="Greece">اليونان</span>
+          </div>
+          <p class="dest-meta" data-ar="6 أيام | 5 ليالٍ · لشهر العسل" data-en="6 days | 5 nights · honeymoon special">6 أيام | 5 ليالٍ · لشهر العسل</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $1,299</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Muscat / Oman -->
+      <article class="dest-card reveal d2" data-tilt>
+        <div class="dest-art">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+            <defs><linearGradient id="skyOmn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aee3ff"/><stop offset=".55" stop-color="#8f7ad0"/><stop offset="1" stop-color="#1c0342"/></linearGradient></defs>
+            <rect width="400" height="260" fill="url(#skyOmn)"/>
+            <circle cx="320" cy="65" r="26" fill="#FFF6E8"/>
+            <path d="M0 235 h400 v25 h-400Z" fill="#160233"/>
+            <path d="M0 238 q80 -8 160 0 t160 0 t80 0 v22 h-400Z" fill="#27094d" opacity=".8"/>
+            <g fill="#1d0538">
+              <path d="M40 235 L90 170 L140 235Z"/>
+              <path d="M120 235 L180 150 L240 235Z"/>
+              <path d="M225 235 L270 180 L315 235Z"/>
+            </g>
+            <path d="M60 200 v35 h10 v-30 a5 5 0 0 0 -10 -5Z" fill="#F5F8FF" opacity=".9"/>
+            <circle cx="65" cy="196" r="7" fill="#F5F8FF" opacity=".9"/>
+            <g class="mini-plane" fill="#F5F8FF"><path d="M80 60 l16 5 -3 3 -18 -2 -8 8 -4-1 6-9 -6-4 3-2 9 3 5-4z"/></g>
+          </svg>
+          <span class="dest-tag" data-ar="طبيعة خلابة 🌊" data-en="Pure nature 🌊">طبيعة خلابة 🌊</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">
+            <h3 data-ar="سلطنة عُمان" data-en="Oman">سلطنة عُمان</h3>
+            <span class="dest-country" data-ar="مسقط" data-en="Muscat">مسقط</span>
+          </div>
+          <p class="dest-meta" data-ar="7 أيام | 6 ليالٍ · شواطئ وجبال" data-en="7 days | 6 nights · beaches &amp; mountains">7 أيام | 6 ليالٍ · شواطئ وجبال</p>
+          <div class="dest-foot">
+            <span class="price"><em data-ar="يبدأ من" data-en="from">يبدأ من</em> $649</span>
+            <a href="#contact" class="dest-cta" data-ar="احجز ✈" data-en="Book ✈">احجز ✈</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="dest-more reveal">
+      <span data-ar="ولدينا +40 وجهة أخرى بانتظارك —" data-en="And 40+ more destinations await —">ولدينا +40 وجهة أخرى بانتظارك —</span>
+      <a href="#contact" data-ar="اسألنا عن وجهتك" data-en="ask us about yours">اسألنا عن وجهتك</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY STEPS + BOARDING PASS ══════════ -->
+<section class="journey section" id="journey" data-sky="night">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="رحلتك معنا" data-en="Your journey with us">رحلتك معنا</span>
+      <h2 class="h2 reveal d1" data-ar="من الحلم… إلى بطاقة الصعود" data-en="From a dream… to a boarding pass">من الحلم… إلى بطاقة الصعود</h2>
+    </div>
+
+    <div class="route" id="route">
+      <svg class="route-path" viewBox="0 0 1000 160" preserveAspectRatio="none" aria-hidden="true">
+        <path id="routeLine" d="M20,120 C220,20 380,150 520,80 C660,10 800,130 980,50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="8 10" stroke-linecap="round"/>
+      </svg>
+      <svg class="route-plane" id="routePlane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+
+      <div class="route-steps">
+        <div class="r-step reveal">
+          <span class="r-num">01</span>
+          <h3 data-ar="اختر وجهتك" data-en="Pick your destination">اختر وجهتك</h3>
+          <p data-ar="أخبرنا بحلمك — نقترح عليك الأنسب لميزانيتك وأسلوبك." data-en="Tell us your dream — we'll match it to your budget and style.">أخبرنا بحلمك — نقترح عليك الأنسب لميزانيتك وأسلوبك.</p>
+        </div>
+        <div class="r-step reveal d1">
+          <span class="r-num">02</span>
+          <h3 data-ar="نجهّز كل شيء" data-en="We arrange everything">نجهّز كل شيء</h3>
+          <p data-ar="تذاكر، تأشيرة، فندق، مواصلات — كلها بضغطة واحدة." data-en="Tickets, visa, hotel, transfers — all in one go.">تذاكر، تأشيرة، فندق، مواصلات — كلها بضغطة واحدة.</p>
+        </div>
+        <div class="r-step reveal d2">
+          <span class="r-num">03</span>
+          <h3 data-ar="استلم بطاقتك" data-en="Get your pass">استلم بطاقتك</h3>
+          <p data-ar="بطاقة صعود باسمك… واستعد للإقلاع." data-en="A boarding pass with your name… ready for take-off.">بطاقة صعود باسمك… واستعد للإقلاع.</p>
+        </div>
+        <div class="r-step reveal d3">
+          <span class="r-num">04</span>
+          <h3 data-ar="عِش الحكاية" data-en="Live the story">عِش الحكاية</h3>
+          <p data-ar="ونبقى معك لحظة بلحظة حتى تعود بذكريات لا تُنسى." data-en="We stay with you moment by moment until you're home with memories.">ونبقى معك لحظة بلحظة حتى تعود بذكريات لا تُنسى.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Boarding pass replica -->
+    <div class="bpass-wrap reveal">
+      <div class="bpass" id="bpass">
+        <div class="bpass-main">
+          <div class="bpass-head">
+            <strong>BOARDING PASS</strong>
+            <span class="bpass-brand">الحيَـاة <b>Hayat</b></span>
+          </div>
+          <div class="bpass-grid" dir="ltr">
+            <div><label data-ar-skip>PASSENGER</label><b data-ar="أنتَ / أنتِ" data-en="YOU">أنتَ / أنتِ</b></div>
+            <div><label data-ar-skip>FROM</label><b>BGD</b><small data-ar="بغداد" data-en="Baghdad">بغداد</small></div>
+            <div class="bpass-route"><span class="bp-dot"></span><svg viewBox="0 0 24 24" class="bp-plane"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg><span class="bp-dot"></span></div>
+            <div><label data-ar-skip>TO</label><b data-ar="حيث تحلم" data-en="ANYWHERE">حيث تحلم</b><small data-ar="العالم كله" data-en="The whole world">العالم كله</small></div>
+            <div><label data-ar-skip>FLIGHT</label><b>HYT-2019</b></div>
+            <div><label data-ar-skip>GATE</label><b>B24</b></div>
+            <div><label data-ar-skip>SEAT</label><b>1A</b></div>
+            <div><label data-ar-skip>CLASS</label><b data-ar-skip>DREAM CLASS</b></div>
+          </div>
+          <p class="bpass-note" data-ar="✦ البوابة تُغلق قبل 30 دقيقة من انطلاق الأحلام — www.hayat.iq" data-en="✦ Gate closes 30 minutes before dreams depart — www.hayat.iq">✦ البوابة تُغلق قبل 30 دقيقة من انطلاق الأحلام — www.hayat.iq</p>
+        </div>
+        <div class="bpass-stub" dir="ltr">
+          <div class="bpass-barcode" aria-hidden="true"></div>
+          <b>BGD ✈ DRM</b>
+          <span>HYT-2019 · 1A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VALUES + AUDIENCE ══════════ -->
+<section class="values section" id="values" data-sky="night">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="قيمنا" data-en="Our Values">قيمنا</span>
+      <h2 class="h2 reveal d1" data-ar="ما الذي يجعل «الحياة» مختلفة؟" data-en="What makes Hayat different?">ما الذي يجعل «الحياة» مختلفة؟</h2>
+    </div>
+    <div class="values-grid">
+      <article class="value-card reveal"><i>✨</i><h3 data-ar="التميّز" data-en="Excellence">التميّز</h3><p data-ar="خدمات استثنائية بفريق محترف عالي المهارة." data-en="Exceptional service by a highly skilled team.">خدمات استثنائية بفريق محترف عالي المهارة.</p></article>
+      <article class="value-card reveal d1"><i>💡</i><h3 data-ar="الابتكار" data-en="Innovation">الابتكار</h3><p data-ar="نطوّر خدماتنا باستمرار لنواكب تطلعاتك المتجددة." data-en="Constantly evolving to meet your changing needs.">نطوّر خدماتنا باستمرار لنواكب تطلعاتك المتجددة.</p></article>
+      <article class="value-card reveal d2"><i>🤝</i><h3 data-ar="الشفافية" data-en="Transparency">الشفافية</h3><p data-ar="علاقات واضحة وموثوقة مع عملائنا وشركائنا." data-en="Clear, trustworthy relationships with clients and partners.">علاقات واضحة وموثوقة مع عملائنا وشركائنا.</p></article>
+      <article class="value-card reveal d3"><i>🛋️</i><h3 data-ar="الراحة" data-en="Comfort">الراحة</h3><p data-ar="كل وسائل الراحة والرفاهية لتجربة سفر ممتعة." data-en="Every means of comfort and luxury for a delightful trip.">كل وسائل الراحة والرفاهية لتجربة سفر ممتعة.</p></article>
+    </div>
+
+    <div class="audience reveal">
+      <h3 class="audience-title" data-ar="لكل مسافرٍ حكاية… ولدينا باقة لكل حكاية" data-en="Every traveler has a story… we have a package for each">لكل مسافرٍ حكاية… ولدينا باقة لكل حكاية</h3>
+      <div class="audience-chips">
+        <span class="chip"><b data-ar="👨‍👩‍👧‍👦 العائلات" data-en="👨‍👩‍👧‍👦 Families">👨‍👩‍👧‍👦 العائلات</b><small data-ar="رحلات تناسب كل الأعمار" data-en="Trips for all ages">رحلات تناسب كل الأعمار</small></span>
+        <span class="chip"><b data-ar="💑 الأزواج" data-en="💑 Couples">💑 الأزواج</b><small data-ar="تجارب رومانسية فريدة" data-en="Unique romantic escapes">تجارب رومانسية فريدة</small></span>
+        <span class="chip"><b data-ar="🎒 المغامرون" data-en="🎒 Young explorers">🎒 المغامرون</b><small data-ar="عروض مليئة بالتحدي والحماس" data-en="Challenge &amp; excitement">عروض مليئة بالتحدي والحماس</small></span>
+        <span class="chip"><b data-ar="💼 الشركات" data-en="💼 Companies">💼 الشركات</b><small data-ar="رحلات أعمال وفعاليات مهنية" data-en="Business trips &amp; events">رحلات أعمال وفعاليات مهنية</small></span>
+        <span class="chip"><b data-ar="👑 البريميوم" data-en="👑 Premium">👑 البريميوم</b><small data-ar="فخامة وتفرّد في كل التفاصيل" data-en="Luxury in every detail">فخامة وتفرّد في كل التفاصيل</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials section" id="testimonials" data-sky="night">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="آراء مسافرينا" data-en="Traveler Stories">آراء مسافرينا</span>
+      <h2 class="h2 reveal d1" data-ar="حكايات عادت معهم من السماء" data-en="Stories they brought back from the sky">حكايات عادت معهم من السماء</h2>
+    </div>
+    <div class="t-slider reveal" id="tSlider">
+      <article class="t-slide is-active">
+        <p data-ar="«من أول اتصال حتى عودتنا لبغداد، فريق الحياة كان معنا خطوة بخطوة. رحلة إسطنبول كانت أجمل مما تخيلنا.»" data-en="“From the first call until we landed back in Baghdad, Hayat's team was with us step by step. Istanbul was more beautiful than we imagined.”">«من أول اتصال حتى عودتنا لبغداد، فريق الحياة كان معنا خطوة بخطوة. رحلة إسطنبول كانت أجمل مما تخيلنا.»</p>
+        <footer><b data-ar="أحمد الربيعي" data-en="Ahmed Al-Rubaie">أحمد الربيعي</b><span data-ar="رحلة عائلية — إسطنبول" data-en="Family trip — Istanbul">رحلة عائلية — إسطنبول</span><i>★★★★★</i></footer>
+      </article>
+      <article class="t-slide">
+        <p data-ar="«حجزوا لنا شهر العسل في سانتوريني بكل التفاصيل. ما احتجنا نفكر بشي — بس نعيش اللحظة.»" data-en="“They booked our Santorini honeymoon down to the smallest detail. We didn't have to think about a thing — just live the moment.”">«حجزوا لنا شهر العسل في سانتوريني بكل التفاصيل. ما احتجنا نفكر بشي — بس نعيش اللحظة.»</p>
+        <footer><b data-ar="زهراء ومصطفى" data-en="Zahraa &amp; Mustafa">زهراء ومصطفى</b><span data-ar="شهر عسل — سانتوريني" data-en="Honeymoon — Santorini">شهر عسل — سانتوريني</span><i>★★★★★</i></footer>
+      </article>
+      <article class="t-slide">
+        <p data-ar="«كشركة، ننظم مؤتمراتنا السنوية مع الحياة منذ ثلاث سنوات. دقة والتزام يصعب إيجادهما.»" data-en="“As a company, we've organized our annual conferences with Hayat for three years. Precision and commitment that are hard to find.”">«كشركة، ننظم مؤتمراتنا السنوية مع الحياة منذ ثلاث سنوات. دقة والتزام يصعب إيجادهما.»</p>
+        <footer><b data-ar="م. سارة الجبوري" data-en="Eng. Sara Al-Jubouri">م. سارة الجبوري</b><span data-ar="رحلات أعمال — دبي" data-en="Corporate travel — Dubai">رحلات أعمال — دبي</span><i>★★★★★</i></footer>
+      </article>
+      <article class="t-slide">
+        <p data-ar="«تأشيرة اليابان كانت حلم بعيد… الحياة خلّته حقيقة خلال أسابيع. رحلة الخريف لطوكيو لا تُنسى.»" data-en="“A Japan visa felt like a distant dream… Hayat made it real within weeks. The autumn trip to Tokyo was unforgettable.”">«تأشيرة اليابان كانت حلم بعيد… الحياة خلّته حقيقة خلال أسابيع. رحلة الخريف لطوكيو لا تُنسى.»</p>
+        <footer><b data-ar="علي حسين" data-en="Ali Hussein">علي حسين</b><span data-ar="مغامرة فردية — طوكيو" data-en="Solo adventure — Tokyo">مغامرة فردية — طوكيو</span><i>★★★★★</i></footer>
+      </article>
+      <div class="t-nav">
+        <button class="t-dotbtn is-active" aria-label="1"></button>
+        <button class="t-dotbtn" aria-label="2"></button>
+        <button class="t-dotbtn" aria-label="3"></button>
+        <button class="t-dotbtn" aria-label="4"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA BAND ══════════ -->
+<section class="cta-band" data-sky="night">
+  <div class="container cta-inner reveal">
+    <h2 data-ar="جاهز للإقلاع؟ ✈" data-en="Ready for take-off? ✈">جاهز للإقلاع؟ ✈</h2>
+    <p data-ar="لا تؤجل حلمك — مقعدك بانتظارك، ونحن نتكفل بالباقي." data-en="Don't postpone your dream — your seat is waiting, we'll handle the rest.">لا تؤجل حلمك — مقعدك بانتظارك، ونحن نتكفل بالباقي.</p>
+    <a href="#contact" class="btn btn-light" data-ar="ابدأ رحلتك الآن" data-en="Start your journey now">ابدأ رحلتك الآن</a>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact section" id="contact" data-sky="night">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</span>
+      <h2 class="h2 reveal d1" data-ar="خلّينا نخطط رحلتك القادمة" data-en="Let's plan your next journey">خلّينا نخطط رحلتك القادمة</h2>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal" id="contactForm">
+        <div class="f-row">
+          <div class="f-field">
+            <label data-ar="الاسم الكامل" data-en="Full name">الاسم الكامل</label>
+            <input type="text" required data-ar-ph="اكتب اسمك" data-en-ph="Your name" placeholder="اكتب اسمك">
+          </div>
+          <div class="f-field">
+            <label data-ar="رقم الهاتف" data-en="Phone">رقم الهاتف</label>
+            <input type="tel" required dir="ltr" placeholder="+964 7xx xxx xxxx">
+          </div>
+        </div>
+        <div class="f-field">
+          <label data-ar="إلى أين تريد السفر؟" data-en="Where to?">إلى أين تريد السفر؟</label>
+          <select>
+            <option data-ar="اختر وجهة…" data-en="Pick a destination…">اختر وجهة…</option>
+            <option data-ar="إسطنبول — تركيا" data-en="Istanbul — Türkiye">إسطنبول — تركيا</option>
+            <option data-ar="دبي — الإمارات" data-en="Dubai — UAE">دبي — الإمارات</option>
+            <option data-ar="القاهرة — مصر" data-en="Cairo — Egypt">القاهرة — مصر</option>
+            <option data-ar="طوكيو — اليابان" data-en="Tokyo — Japan">طوكيو — اليابان</option>
+            <option data-ar="سانتوريني — اليونان" data-en="Santorini — Greece">سانتوريني — اليونان</option>
+            <option data-ar="وجهة أخرى…" data-en="Somewhere else…">وجهة أخرى…</option>
+          </select>
+        </div>
+        <div class="f-field">
+          <label data-ar="أخبرنا عن رحلتك" data-en="Tell us about your trip">أخبرنا عن رحلتك</label>
+          <textarea rows="4" data-ar-ph="عدد المسافرين، التواريخ، أفكارك…" data-en-ph="Travelers, dates, ideas…" placeholder="عدد المسافرين، التواريخ، أفكارك…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" data-ar="أرسل الطلب ✈" data-en="Send request ✈">أرسل الطلب ✈</button>
+      </form>
+
+      <div class="contact-info">
+        <article class="c-card reveal">
+          <i>📞</i>
+          <div><b data-ar="الخط الساخن" data-en="Hotline">الخط الساخن</b><a href="tel:80001010" dir="ltr">8000 1010</a></div>
+        </article>
+        <article class="c-card reveal d1">
+          <i>✉️</i>
+          <div><b data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</b><a href="mailto:info@hayat.iq" dir="ltr">info@hayat.iq</a></div>
+        </article>
+        <article class="c-card reveal d2">
+          <i>📍</i>
+          <div><b data-ar="فروعنا" data-en="Our offices">فروعنا</b><span data-ar="بغداد — السعدون · بغداد — الكرادة" data-en="Baghdad — Saadoun St. · Baghdad — Karrada">بغداد — السعدون · بغداد — الكرادة</span></div>
+        </article>
+        <article class="c-card reveal d3">
+          <i>🕓</i>
+          <div><b data-ar="ساعات العمل" data-en="Working hours">ساعات العمل</b><span data-ar="السبت – الخميس · 9 صباحاً – 9 مساءً" data-en="Sat – Thu · 9 AM – 9 PM">السبت – الخميس · 9 صباحاً – 9 مساءً</span></div>
+        </article>
+        <div class="socials reveal d4">
+          <a href="https://facebook.com/hayat.iq" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5Z"/></svg></a>
+        <a href="https://instagram.com/hayat.iq" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c2.717 0 3.056.01 4.122.06c1.065.05 1.79.217 2.428.465c.66.254 1.216.598 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.047 1.066.06 1.405.06 4.122c0 2.717-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772a4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465c-1.066.047-1.405.06-4.122.06c-2.717 0-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153a4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122c.05-1.066.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2m0 5a5 5 0 1 0 0 10a5 5 0 0 0 0-10m6.5-.25a1.25 1.25 0 0 0-2.5 0a1.25 1.25 0 0 0 2.5 0M12 9a3 3 0 1 1 0 6a3 3 0 0 1 0-6"/></svg></a>
+          <a href="https://wa.me/9647800001010" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"/></svg></a>
+          <a href="https://t.me/hayat_iq" aria-label="Telegram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="m20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER : الليل ══════════ -->
+<footer class="footer" data-sky="night">
+  <div class="footer-stars" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg class="brand-mark big" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="3.5"/>
+          <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+            <path d="M16 40 L29 27"/><path d="M21 43 L41 23"/><path d="M30 45 L46 29"/>
+          </g>
+        </svg>
+        <p class="footer-word">الحيَـاة <b>Hayat</b></p>
+        <p class="footer-tag" data-ar="الحياة رحلة… تستحق أن تُعاش" data-en="Life is a journey… worth living">الحياة رحلة… تستحق أن تُعاش</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="روابط سريعة" data-en="Quick links">روابط سريعة</h4>
+        <a href="#about" data-ar="عن الحياة" data-en="About">عن الحياة</a>
+        <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+        <a href="#destinations" data-ar="الوجهات" data-en="Destinations">الوجهات</a>
+        <a href="#testimonials" data-ar="آراء المسافرين" data-en="Stories">آراء المسافرين</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="خدماتنا" data-en="Services">خدماتنا</h4>
+        <a href="#services" data-ar="تذاكر الطيران" data-en="Flight tickets">تذاكر الطيران</a>
+        <a href="#services" data-ar="الباقات السياحية" data-en="Tour packages">الباقات السياحية</a>
+        <a href="#services" data-ar="التأشيرات" data-en="Visas">التأشيرات</a>
+        <a href="#services" data-ar="رحلات الأعمال" data-en="Corporate travel">رحلات الأعمال</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-ar="تواصل" data-en="Contact">تواصل</h4>
+        <a href="tel:80001010" dir="ltr">8000 1010</a>
+        <a href="mailto:info@hayat.iq" dir="ltr">info@hayat.iq</a>
+        <a href="https://www.hayat.iq" dir="ltr">www.hayat.iq</a>
+        <span data-ar="بغداد، العراق" data-en="Baghdad, Iraq">بغداد، العراق</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-ar="© 2026 الحياة للسياحة والسفر — جميع الحقوق محفوظة" data-en="© 2026 Hayat Travel &amp; Tourism — All rights reserved">© 2026 الحياة للسياحة والسفر — جميع الحقوق محفوظة</p>
+      <p class="made-with" data-ar="صُمم بشغف في بغداد 🤍" data-en="Crafted with passion in Baghdad 🤍">صُمم بشغف في بغداد 🤍</p>
+    </div>
+  </div>
+</footer>
+
+<!-- back to top -->
+<button class="to-top" id="toTop" aria-label="العودة للأعلى">
+  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+</button>
+
+<!-- toast -->
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
