@@ -1,5 +1,7 @@
-/* Hayat PWA service worker — cache-first for the app shell */
-const CACHE = "hayat-v1";
+/* Hayat PWA service worker
+   v2 — network-first for pages/code so new deploys show up immediately;
+   cache-first only for images (they are content-hashed by name in practice). */
+const CACHE = "hayat-v2";
 const SHELL = [
   "./",
   "index.html",
@@ -16,6 +18,12 @@ const SHELL = [
   "imgs/text-light.png",
   "imgs/icon-192.png",
   "imgs/icon-512.png",
+  "imgs/dest-istanbul.webp",
+  "imgs/dest-dubai.webp",
+  "imgs/dest-cairo.webp",
+  "imgs/dest-tokyo.webp",
+  "imgs/dest-santorini.webp",
+  "imgs/dest-muscat.webp",
   "imgs/moment-1.webp",
   "imgs/moment-2.webp",
   "imgs/moment-3.webp",
@@ -37,15 +45,30 @@ self.addEventListener("activate", e => {
 });
 
 self.addEventListener("fetch", e => {
-  if (e.request.method !== "GET" || !e.request.url.startsWith(self.location.origin)) return;
+  const req = e.request;
+  if (req.method !== "GET" || !req.url.startsWith(self.location.origin)) return;
+
+  // images: cache-first (fast), refresh in background
+  if (req.destination === "image") {
+    e.respondWith(
+      caches.match(req).then(hit => {
+        const net = fetch(req).then(res => {
+          if (res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
+          return res;
+        }).catch(() => hit);
+        return hit || net;
+      })
+    );
+    return;
+  }
+
+  // everything else (HTML/CSS/JS/JSON): network-first, cache as offline fallback
   e.respondWith(
-    caches.match(e.request).then(hit =>
-      hit ||
-      fetch(e.request).then(res => {
-        const copy = res.clone();
-        if (res.ok) caches.open(CACHE).then(c => c.put(e.request, copy));
-        return res;
-      }).catch(() => caches.match("index.html"))
+    fetch(req).then(res => {
+      if (res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
+      return res;
+    }).catch(() =>
+      caches.match(req).then(hit => hit || caches.match("index.html"))
     )
   );
 });
