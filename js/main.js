@@ -195,11 +195,70 @@
   const savedLang = localStorage.getItem("hayat-lang");
   if (savedLang === "en") applyLang("en");
 
-  /* ─────────── SEARCH TABS ─────────── */
-  $$(".stab").forEach(tab => tab.addEventListener("click", () => {
-    $$(".stab").forEach(t => t.classList.remove("is-active"));
-    tab.classList.add("is-active");
-  }));
+  /* ─────────── SEARCH WIDGET (ticket card) ─────────── */
+  const searchCard = $("#searchCard");
+  if (searchCard) {
+    const tabs = $$(".stab", searchCard);
+    const panels = $$(".spanel", searchCard);
+
+    const activateTab = tab => {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(p => p.classList.toggle("is-active", p.id === "panel-" + tab.dataset.panel));
+    };
+    tabs.forEach(tab => tab.addEventListener("click", () => activateTab(tab)));
+    $(".search-tabs", searchCard).addEventListener("keydown", e => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      const rtl = document.documentElement.dir === "rtl";
+      const delta = (e.key === "ArrowRight") !== rtl ? 1 : -1;
+      const next = tabs[(i + delta + tabs.length) % tabs.length];
+      next.focus();
+      activateTab(next);
+    });
+
+    /* swap from ⇄ to */
+    const fromInput = $("#ffFrom"), toInput = $("#ffTo"), swapBtn = $("#swapBtn");
+    let swapTurns = 0;
+    swapBtn?.addEventListener("click", () => {
+      [fromInput.value, toInput.value] = [toInput.value, fromInput.value];
+      swapBtn.style.transform = `rotate(${++swapTurns * 180}deg)`;
+    });
+
+    /* dates: sensible defaults, no past days, return always after departure */
+    const fmtDate = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const plusDays = n => { const d = new Date(); d.setDate(d.getDate() + n); return fmtDate(d); };
+    const today = plusDays(0);
+    $$('input[type="date"]', searchCard).forEach(i => (i.min = today));
+    const linkDates = (aSel, bSel, d1, d2) => {
+      const a = $(aSel), b = $(bSel);
+      if (!a || !b) return;
+      a.value = plusDays(d1); b.value = plusDays(d2); b.min = a.value;
+      a.addEventListener("change", () => {
+        b.min = a.value || today;
+        if (b.value && b.value < b.min) b.value = b.min;
+      });
+    };
+    linkDates("#ffDepart", "#ffReturn", 7, 11);
+    linkDates("#fhIn", "#fhOut", 7, 11);
+
+    /* one-way trips don't need a return date */
+    const returnInput = $("#ffReturn");
+    const returnField = $("#ffReturnField");
+    $$('input[name="trip"]', searchCard).forEach(r => r.addEventListener("change", () => {
+      const oneway = searchCard.querySelector('input[name="trip"]:checked').value === "oneway";
+      returnField.classList.toggle("is-off", oneway);
+      returnInput.disabled = oneway;
+    }));
+
+    /* clear the error highlight as soon as the user fixes the field */
+    searchCard.addEventListener("input", e => e.target.closest(".sfield")?.classList.remove("err"));
+  }
 
   /* ─────────── FORMS → TOAST ─────────── */
   const toast = $("#toast");
@@ -213,8 +272,52 @@
   const submitMsg = () => document.documentElement.lang === "en"
     ? "Thank you! Hayat's team will contact you shortly ✈️"
     : "شكراً لك! فريق الحياة سيتواصل معك قريباً ✈️";
-  $("#searchForm")?.addEventListener("submit", e => { e.preventDefault(); showToast(submitMsg()); });
   $("#contactForm")?.addEventListener("submit", e => { e.preventDefault(); showToast(submitMsg()); e.target.reset(); });
+
+  /* search form: validate the active panel, fake a short search, then confirm */
+  const searchMsgs = {
+    flights: [
+      v => `أفضل الرحلات نحو «${v}» في طريقها إليك — فريق الحياة سيتواصل معك قريباً ✈️`,
+      v => `Our best flights to “${v}” are on their way — Hayat's team will reach out soon ✈️`
+    ],
+    hotels: [
+      v => `نجهّز لك أرقى الفنادق في «${v}» — توقّع اتصالنا قريباً 🏨`,
+      v => `Handpicking the finest hotels in “${v}” — expect our call soon 🏨`
+    ],
+    packages: [
+      v => `باقات «${v}» بانتظارك — سنشاركك كل التفاصيل قريباً 🧳`,
+      v => `“${v}” packages await — we'll share all the details soon 🧳`
+    ],
+    visas: [
+      v => `استلمنا طلب تأشيرة «${v}» — سنرافقك خطوة بخطوة حتى ختم الجواز 🛂`,
+      v => `Your “${v}” visa request is in — we'll guide you to that passport stamp 🛂`
+    ]
+  };
+  $("#searchForm")?.addEventListener("submit", e => {
+    e.preventDefault();
+    const panel = $(".spanel.is-active", searchCard);
+    const req = $("[data-req]", panel);
+    const val = !req ? ""
+      : req.tagName === "SELECT"
+        ? (req.value ? req.selectedOptions[0].textContent.trim() : "")
+        : req.value.trim();
+    if (req && !val) {
+      const field = req.closest(".sfield");
+      field.classList.remove("err");
+      void field.offsetWidth; // restart the shake animation
+      field.classList.add("err");
+      req.focus();
+      return;
+    }
+    const btn = $(".search-btn", panel);
+    if (btn.classList.contains("is-loading")) return;
+    btn.classList.add("is-loading");
+    setTimeout(() => {
+      btn.classList.remove("is-loading");
+      const [ar, en] = searchMsgs[panel.id.replace("panel-", "")];
+      showToast(document.documentElement.lang === "en" ? en(val) : ar(val));
+    }, reduceMotion ? 60 : 1300);
+  });
 
   /* ─────────── COUNTERS ─────────── */
   const counterIO = new IntersectionObserver(entries => {
