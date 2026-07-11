@@ -121,40 +121,307 @@
       </div>
     </div>
 
-    <!-- Search widget : بطاقة صعود -->
+    <!-- Search widget : تذكرة البحث -->
     <div class="search-card reveal d5" id="searchCard">
-      <div class="search-tabs" role="tablist">
-        <button class="stab is-active" data-ar="✈ طيران" data-en="✈ Flights">✈ طيران</button>
-        <button class="stab" data-ar="🏨 فنادق" data-en="🏨 Hotels">🏨 فنادق</button>
-        <button class="stab" data-ar="🧳 باقات" data-en="🧳 Packages">🧳 باقات</button>
-        <button class="stab" data-ar="🛂 تأشيرات" data-en="🛂 Visas">🛂 تأشيرات</button>
+
+      <div class="search-tabs" role="tablist" aria-label="نوع الحجز">
+        <button type="button" class="stab is-active" role="tab" aria-selected="true" data-panel="flights">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l1.4-.7a2 2 0 0 1 2.3.4l3.7 3.7a2 2 0 0 0 1.8.5l4.3-1.1a2.1 2.1 0 0 1 1 4.1Z"/></svg>
+          <span data-ar="طيران" data-en="Flights">طيران</span>
+        </button>
+        <button type="button" class="stab" role="tab" aria-selected="false" tabindex="-1" data-panel="hotels">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4a3 3 0 0 1 6 0v4M9 10h.01M15 10h.01M12 13h.01"/></svg>
+          <span data-ar="فنادق" data-en="Hotels">فنادق</span>
+        </button>
+        <button type="button" class="stab" role="tab" aria-selected="false" tabindex="-1" data-panel="packages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 10v7M15 10v7"/></svg>
+          <span data-ar="باقات" data-en="Packages">باقات</span>
+        </button>
+        <button type="button" class="stab" role="tab" aria-selected="false" tabindex="-1" data-panel="visas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="9" r="3"/><path d="M8 16h8"/></svg>
+          <span data-ar="تأشيرات" data-en="Visas">تأشيرات</span>
+        </button>
+        <span class="tabs-code" aria-hidden="true">HYT · 2019</span>
       </div>
-      <form class="search-form" id="searchForm">
-        <div class="sfield">
-          <label data-ar="من" data-en="From">من</label>
-          <input type="text" value="بغداد BGD" data-ar-ph="مدينة المغادرة" data-en-ph="Departure city">
+
+      <div class="ticket-tear" aria-hidden="true"></div>
+
+      <form class="search-form" id="searchForm" novalidate>
+
+        <!-- ✈ FLIGHTS -->
+        <div class="spanel is-active" id="panel-flights" role="tabpanel">
+          <div class="trip-toggle" role="radiogroup" aria-label="نوع الرحلة">
+            <label class="trip-opt"><input type="radio" name="trip" value="round" checked><span data-ar="ذهاب وعودة" data-en="Round trip">ذهاب وعودة</span></label>
+            <label class="trip-opt"><input type="radio" name="trip" value="oneway"><span data-ar="ذهاب فقط" data-en="One way">ذهاب فقط</span></label>
+          </div>
+          <div class="srow srow-route">
+            <div class="sfield">
+              <label for="ffFrom" data-ar="من" data-en="From">من</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l1.4-.7a2 2 0 0 1 2.3.4l3.7 3.7a2 2 0 0 0 1.8.5l4.3-1.1a2.1 2.1 0 0 1 1 4.1Z"/></svg>
+                <input id="ffFrom" type="text" list="cityList" value="بغداد (BGD)" autocomplete="off" data-ar-ph="مدينة المغادرة" data-en-ph="Departure city" placeholder="مدينة المغادرة">
+              </div>
+            </div>
+            <button type="button" class="swap-btn" id="swapBtn" aria-label="تبديل بين المدينتين">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+            </button>
+            <div class="sfield">
+              <label for="ffTo" data-ar="إلى" data-en="To">إلى</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22h20"/><path d="M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2a2.1 2.1 0 0 1-.4 3.87Z"/></svg>
+                <input id="ffTo" type="text" list="cityList" data-req autocomplete="off" data-ar-ph="إلى أين تحلم؟" data-en-ph="Where do you dream?" placeholder="إلى أين تحلم؟">
+              </div>
+            </div>
+          </div>
+          <div class="srow srow-main">
+            <div class="sfield">
+              <label for="ffDepart" data-ar="المغادرة" data-en="Departure">المغادرة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input id="ffDepart" type="date" dir="ltr">
+              </div>
+            </div>
+            <div class="sfield" id="ffReturnField">
+              <label for="ffReturn" data-ar="العودة" data-en="Return">العودة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input id="ffReturn" type="date" dir="ltr">
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="ffPax" data-ar="المسافرون" data-en="Travelers">المسافرون</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <select id="ffPax">
+                  <option value="1" data-ar="مسافر واحد" data-en="1 traveler">مسافر واحد</option>
+                  <option value="2" data-ar="مسافران" data-en="2 travelers">مسافران</option>
+                  <option value="family" data-ar="عائلة (3–5)" data-en="Family (3–5)">عائلة (3–5)</option>
+                  <option value="group" data-ar="مجموعة +6" data-en="Group 6+">مجموعة +6</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary search-btn">
+              <svg class="btn-plane" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+              <span data-ar="ابحث عن الرحلات" data-en="Search flights">ابحث عن الرحلات</span>
+            </button>
+          </div>
         </div>
-        <div class="swap" aria-hidden="true">⇄</div>
-        <div class="sfield">
-          <label data-ar="إلى" data-en="To">إلى</label>
-          <input type="text" data-ar-ph="إلى أين تحلم؟" data-en-ph="Where do you dream?" placeholder="إلى أين تحلم؟">
+
+        <!-- 🏨 HOTELS -->
+        <div class="spanel" id="panel-hotels" role="tabpanel">
+          <div class="srow srow-1">
+            <div class="sfield">
+              <label for="fhCity" data-ar="الوجهة" data-en="Destination">الوجهة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <input id="fhCity" type="text" list="cityList" data-req autocomplete="off" data-ar-ph="اسم المدينة أو الفندق" data-en-ph="City or hotel name" placeholder="اسم المدينة أو الفندق">
+              </div>
+            </div>
+          </div>
+          <div class="srow srow-main">
+            <div class="sfield">
+              <label for="fhIn" data-ar="تسجيل الوصول" data-en="Check-in">تسجيل الوصول</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input id="fhIn" type="date" dir="ltr">
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fhOut" data-ar="المغادرة" data-en="Check-out">المغادرة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input id="fhOut" type="date" dir="ltr">
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fhRooms" data-ar="الغرف والضيوف" data-en="Rooms &amp; guests">الغرف والضيوف</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 17h20"/><path d="M6 10V8m12 2V8"/></svg>
+                <select id="fhRooms">
+                  <option value="1-2" data-ar="غرفة · بالغان" data-en="1 room · 2 adults">غرفة · بالغان</option>
+                  <option value="1-fam" data-ar="غرفة عائلية" data-en="Family room">غرفة عائلية</option>
+                  <option value="2" data-ar="غرفتان" data-en="2 rooms">غرفتان</option>
+                  <option value="suite" data-ar="جناح فاخر" data-en="Luxury suite">جناح فاخر</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary search-btn">
+              <svg class="btn-plane" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+              <span data-ar="ابحث عن الفنادق" data-en="Search hotels">ابحث عن الفنادق</span>
+            </button>
+          </div>
         </div>
-        <div class="sfield">
-          <label data-ar="التاريخ" data-en="Date">التاريخ</label>
-          <input type="date">
+
+        <!-- 🧳 PACKAGES -->
+        <div class="spanel" id="panel-packages" role="tabpanel">
+          <div class="srow srow-2">
+            <div class="sfield">
+              <label for="fpDest" data-ar="الوجهة" data-en="Destination">الوجهة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3c2.5 2.4 4 5.5 4 9s-1.5 6.6-4 9c-2.5-2.4-4-5.5-4-9s1.5-6.6 4-9Z"/></svg>
+                <select id="fpDest" data-req>
+                  <option value="" data-ar="اختر وجهتك" data-en="Pick a destination">اختر وجهتك</option>
+                  <option value="istanbul" data-ar="إسطنبول — تركيا" data-en="Istanbul — Türkiye">إسطنبول — تركيا</option>
+                  <option value="dubai" data-ar="دبي — الإمارات" data-en="Dubai — UAE">دبي — الإمارات</option>
+                  <option value="cairo" data-ar="القاهرة — مصر" data-en="Cairo — Egypt">القاهرة — مصر</option>
+                  <option value="santorini" data-ar="سانتوريني — اليونان" data-en="Santorini — Greece">سانتوريني — اليونان</option>
+                  <option value="tokyo" data-ar="طوكيو — اليابان" data-en="Tokyo — Japan">طوكيو — اليابان</option>
+                  <option value="muscat" data-ar="مسقط — عُمان" data-en="Muscat — Oman">مسقط — عُمان</option>
+                  <option value="other" data-ar="وجهة أخرى — اقترحوا عليّ" data-en="Somewhere else — surprise me">وجهة أخرى — اقترحوا عليّ</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fpType" data-ar="نوع الباقة" data-en="Package type">نوع الباقة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17l-5.9 3 1.2-6.5L2.5 8.9 9.1 8Z"/></svg>
+                <select id="fpType">
+                  <option value="family" data-ar="عائلية" data-en="Family">عائلية</option>
+                  <option value="honeymoon" data-ar="شهر عسل" data-en="Honeymoon">شهر عسل</option>
+                  <option value="adventure" data-ar="مغامرة" data-en="Adventure">مغامرة</option>
+                  <option value="luxury" data-ar="فاخرة" data-en="Luxury">فاخرة</option>
+                  <option value="budget" data-ar="اقتصادية" data-en="Budget-friendly">اقتصادية</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="srow srow-main">
+            <div class="sfield">
+              <label for="fpWhen" data-ar="متى تسافر؟" data-en="When?">متى تسافر؟</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <select id="fpWhen">
+                  <option value="next" data-ar="الشهر القادم" data-en="Next month">الشهر القادم</option>
+                  <option value="3m" data-ar="خلال ٣ أشهر" data-en="Within 3 months">خلال ٣ أشهر</option>
+                  <option value="summer" data-ar="عطلة الصيف" data-en="Summer break">عطلة الصيف</option>
+                  <option value="winter" data-ar="عطلة الشتاء" data-en="Winter break">عطلة الشتاء</option>
+                  <option value="flex" data-ar="مرن — لم أحدد" data-en="Flexible">مرن — لم أحدد</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fpDays" data-ar="المدة" data-en="Duration">المدة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <select id="fpDays">
+                  <option value="3-5" data-ar="٣–٥ أيام" data-en="3–5 days">٣–٥ أيام</option>
+                  <option value="7" data-ar="أسبوع" data-en="One week">أسبوع</option>
+                  <option value="10" data-ar="١٠ أيام" data-en="10 days">١٠ أيام</option>
+                  <option value="14+" data-ar="أسبوعان أو أكثر" data-en="2+ weeks">أسبوعان أو أكثر</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fpPax" data-ar="المسافرون" data-en="Travelers">المسافرون</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <select id="fpPax">
+                  <option value="2" data-ar="شخصان" data-en="2 travelers">شخصان</option>
+                  <option value="family" data-ar="عائلة (3–5)" data-en="Family (3–5)">عائلة (3–5)</option>
+                  <option value="group" data-ar="مجموعة +6" data-en="Group 6+">مجموعة +6</option>
+                  <option value="1" data-ar="مسافر واحد" data-en="Solo traveler">مسافر واحد</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary search-btn">
+              <svg class="btn-plane" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+              <span data-ar="استكشف الباقات" data-en="Explore packages">استكشف الباقات</span>
+            </button>
+          </div>
         </div>
-        <div class="sfield">
-          <label data-ar="المسافرون" data-en="Travelers">المسافرون</label>
-          <select>
-            <option data-ar="1 مسافر" data-en="1 traveler">1 مسافر</option>
-            <option data-ar="2 مسافران" data-en="2 travelers">2 مسافران</option>
-            <option data-ar="عائلة (3-5)" data-en="Family (3–5)">عائلة (3-5)</option>
-            <option data-ar="مجموعة +6" data-en="Group 6+">مجموعة +6</option>
-          </select>
+
+        <!-- 🛂 VISAS -->
+        <div class="spanel" id="panel-visas" role="tabpanel">
+          <div class="srow srow-2">
+            <div class="sfield">
+              <label for="fvCountry" data-ar="الدولة" data-en="Country">الدولة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3c2.5 2.4 4 5.5 4 9s-1.5 6.6-4 9c-2.5-2.4-4-5.5-4-9s1.5-6.6 4-9Z"/></svg>
+                <select id="fvCountry" data-req>
+                  <option value="" data-ar="اختر الدولة" data-en="Pick a country">اختر الدولة</option>
+                  <option value="tr" data-ar="تركيا" data-en="Türkiye">تركيا</option>
+                  <option value="ae" data-ar="الإمارات" data-en="UAE">الإمارات</option>
+                  <option value="eg" data-ar="مصر" data-en="Egypt">مصر</option>
+                  <option value="schengen" data-ar="شنغن — أوروبا" data-en="Schengen — Europe">شنغن — أوروبا</option>
+                  <option value="uk" data-ar="بريطانيا" data-en="United Kingdom">بريطانيا</option>
+                  <option value="us" data-ar="أمريكا" data-en="United States">أمريكا</option>
+                  <option value="jp" data-ar="اليابان" data-en="Japan">اليابان</option>
+                  <option value="other" data-ar="دولة أخرى" data-en="Another country">دولة أخرى</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fvType" data-ar="نوع التأشيرة" data-en="Visa type">نوع التأشيرة</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 8.4-8 9c-4.6-.6-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+                <select id="fvType">
+                  <option value="tourist" data-ar="سياحية" data-en="Tourist">سياحية</option>
+                  <option value="business" data-ar="عمل" data-en="Business">عمل</option>
+                  <option value="family" data-ar="زيارة عائلية" data-en="Family visit">زيارة عائلية</option>
+                  <option value="student" data-ar="دراسية" data-en="Student">دراسية</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="srow srow-2btn">
+            <div class="sfield">
+              <label for="fvDate" data-ar="تاريخ السفر المتوقع" data-en="Expected travel date">تاريخ السفر المتوقع</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input id="fvDate" type="date" dir="ltr">
+              </div>
+            </div>
+            <div class="sfield">
+              <label for="fvPax" data-ar="عدد المتقدمين" data-en="Applicants">عدد المتقدمين</label>
+              <div class="sctrl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <select id="fvPax">
+                  <option value="1" data-ar="شخص واحد" data-en="1 applicant">شخص واحد</option>
+                  <option value="2" data-ar="شخصان" data-en="2 applicants">شخصان</option>
+                  <option value="3-5" data-ar="٣–٥ أشخاص" data-en="3–5 applicants">٣–٥ أشخاص</option>
+                  <option value="6+" data-ar="٦ أو أكثر" data-en="6 or more">٦ أو أكثر</option>
+                </select>
+                <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary search-btn">
+              <svg class="btn-plane" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5z"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+              <span data-ar="ابدأ الطلب" data-en="Start application">ابدأ الطلب</span>
+            </button>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary search-btn" data-ar="ابحث عن رحلتك" data-en="Find your trip">ابحث عن رحلتك</button>
+
       </form>
-      <div class="search-perforation" aria-hidden="true"></div>
+
+      <datalist id="cityList">
+        <option value="بغداد (BGD)"></option>
+        <option value="أربيل (EBL)"></option>
+        <option value="البصرة (BSR)"></option>
+        <option value="النجف (NJF)"></option>
+        <option value="دبي (DXB)"></option>
+        <option value="إسطنبول (IST)"></option>
+        <option value="أنطاليا (AYT)"></option>
+        <option value="القاهرة (CAI)"></option>
+        <option value="عمّان (AMM)"></option>
+        <option value="الدوحة (DOH)"></option>
+        <option value="بيروت (BEY)"></option>
+        <option value="مسقط (MCT)"></option>
+        <option value="طوكيو (NRT)"></option>
+        <option value="سانتوريني (JTR)"></option>
+      </datalist>
     </div>
   </div>
 
