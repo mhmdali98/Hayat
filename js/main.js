@@ -551,7 +551,19 @@
 
   /* ─────────── PWA ─────────── */
   if ("serviceWorker" in navigator && location.protocol === "https:") {
-    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    // reload once as soon as an updated worker takes over, so users see
+    // fresh deployments without having to refresh twice or clear data
+    let swReloaded = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (swReloaded) return;
+      swReloaded = true;
+      location.reload();
+    });
+    addEventListener("load", () =>
+      navigator.serviceWorker.register("sw.js")
+        .then(reg => reg.update())
+        .catch(() => {})
+    );
   }
 
 })();

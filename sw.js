@@ -1,7 +1,7 @@
 /* Hayat PWA service worker
    v2 — network-first for pages/code so new deploys show up immediately;
    cache-first only for images (they are content-hashed by name in practice). */
-const CACHE = "hayat-v2";
+const CACHE = "hayat-v3";
 const SHELL = [
   "./",
   "index.html",
@@ -38,6 +38,7 @@ self.addEventListener("install", e => {
 
 self.addEventListener("activate", e => {
   e.waitUntil(
+    // purge EVERY old cache (v1's cache-first entries kept serving stale pages)
     caches.keys()
       .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
