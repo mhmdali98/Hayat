@@ -89,13 +89,17 @@ body[data-sky="dusk"] .glow,body[data-sky="night"] .glow{opacity:1}
 .preloader-panel.top{top:0}
 .preloader-panel.bottom{bottom:0;background:linear-gradient(0deg,#1A0440,#0F0526)}
 .preloader-core{position:relative;z-index:2;text-align:center;transition:opacity .4s ease,transform .4s ease}
-.pre-logo{width:104px;margin-inline:auto}
-.pre-circle{stroke-dasharray:327;stroke-dashoffset:327;animation:draw 1.15s var(--ease-out) forwards .1s}
-.pre-mark path{stroke-dasharray:80;stroke-dashoffset:80;animation:draw .6s var(--ease-out) forwards}
-.pre-mark path:nth-child(1){animation-delay:.7s}
-.pre-mark path:nth-child(2){animation-delay:.85s}
-.pre-mark path:nth-child(3){animation-delay:1s}
-@keyframes draw{to{stroke-dashoffset:0}}
+.pre-ico{
+  width:110px;height:110px;object-fit:contain;margin-inline:auto;
+  opacity:0;transform:scale(.6) rotate(-14deg);
+  animation:preIn 1s var(--ease-spring) forwards .15s,preGlow 2.6s ease-in-out infinite 1.2s;
+  filter:drop-shadow(0 0 22px rgba(185,128,217,.45));
+}
+@keyframes preIn{to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes preGlow{
+  0%,100%{filter:drop-shadow(0 0 14px rgba(185,128,217,.35))}
+  50%{filter:drop-shadow(0 0 30px rgba(255,180,164,.6))}
+}
 .pre-word{font-size:2rem;font-weight:800;margin-top:14px;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
 .pre-tag{color:rgba(245,248,255,.55);font-size:.9rem;margin-top:4px}
 .pre-bar{width:180px;height:3px;border-radius:99px;background:rgba(245,248,255,.12);margin:18px auto 0;overflow:hidden}
@@ -124,11 +128,13 @@ body.flying .flight-rail{opacity:1}
 .nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:18px}
 .nav.scrolled{background:rgba(15,5,38,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 40px -18px rgba(0,0,0,.6)}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-mark{width:44px;height:44px;color:currentColor;transition:transform .5s var(--ease-spring)}
-.brand:hover .brand-mark{transform:rotate(-12deg) scale(1.06)}
-.brand-text{display:flex;flex-direction:column;line-height:1.05}
-.brand-ar{font-weight:800;font-size:1.15rem}
-.brand-en{font-family:var(--font-logo);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.75}
+.brand-logo{height:44px;width:auto;transition:transform .5s var(--ease-spring)}
+.brand:hover .brand-logo{transform:scale(1.05)}
+/* the original (purple) artwork on light dawn sky — the recolored lavender one on dark skies */
+.brand-logo-onlight{display:none}
+body[data-sky="dawn"] .nav:not(.scrolled) .brand-logo-onlight{display:block}
+body[data-sky="dawn"] .nav:not(.scrolled) .brand-logo-ondark{display:none}
+@media(max-width:520px){.brand-logo{height:36px}}
 .nav-links{display:flex;gap:clamp(10px,2vw,26px)}
 .nav-link{position:relative;font-weight:500;font-size:.95rem;opacity:.85;padding-block:6px;transition:opacity .3s}
 .nav-link::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:0;height:2px;border-radius:2px;background:var(--grad-brand);transition:width .35s var(--ease-out)}
@@ -175,6 +181,11 @@ html[dir="rtl"] .mobile-menu.open{clip-path:circle(150% at 50% 40px)}
 .mm-link:active{color:var(--sunset)}
 .mm-cta{margin-top:22px;opacity:0;transform:translateY(18px);transition:.45s var(--ease-out) .5s}
 .mobile-menu.open .mm-cta{opacity:1;transform:none}
+.mm-logo{
+  width:74px;height:74px;object-fit:contain;margin-bottom:18px;
+  opacity:0;transform:scale(.7);transition:.5s var(--ease-spring) .1s;
+}
+.mobile-menu.open .mm-logo{opacity:1;transform:scale(1)}
 
 /* ═══════════ BUTTONS ═══════════ */
 .btn{
@@ -473,8 +484,7 @@ html[dir="ltr"] .price em{font-family:var(--font-en)}
 .bpass-main{background:var(--lavender);color:var(--purple);padding:24px 26px}
 .bpass-head{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:2px solid rgba(37,3,83,.1);padding-bottom:14px}
 .bpass-head strong{font-family:var(--font-en);letter-spacing:.16em;font-size:1rem}
-.bpass-brand{font-weight:800;font-size:1rem}
-.bpass-brand b{font-family:var(--font-logo);font-weight:700;font-size:.85rem;letter-spacing:.1em;opacity:.8;margin-inline-start:4px}
+.bpass-logo{height:34px;width:auto}
 .bpass-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 18px;padding-block:18px 6px;text-align:left}
 .bpass-grid label{display:block;font-family:var(--font-en);font-size:.6rem;letter-spacing:.14em;color:rgba(37,3,83,.5);font-weight:600}
 .bpass-grid b{font-family:var(--font-en);font-weight:700;font-size:1.05rem}
@@ -625,7 +635,8 @@ html[dir="ltr"] .c-card:hover{--dir:-1}
 }
 @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}}
 @media(max-width:540px){.footer-top{grid-template-columns:1fr}}
-.footer-brand .brand-mark.big{width:60px;height:60px;color:var(--sunset)}
+.footer-ico{width:64px;height:64px;object-fit:contain;transition:transform .5s var(--ease-spring)}
+.footer-ico:hover{transform:rotate(-10deg) scale(1.08)}
 .footer-word{font-size:1.5rem;font-weight:800;margin-top:14px}
 .footer-word b{font-family:var(--font-logo);font-size:1rem;letter-spacing:.18em;opacity:.75;margin-inline-start:6px}
 .footer-tag{color:rgba(245,248,255,.55);margin-top:6px;font-size:.95rem}
